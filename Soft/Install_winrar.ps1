@@ -2,7 +2,7 @@
 # PowerShell 脚本：从指定 URL 下载文件
 #
 # 功能:
-#   - 自动将文件下载到本脚本所在的目录。
+#   - 自动将文件下载到 PowerShell 当前所在的目录。
 #   - 如果文件已存在，则跳过下载。
 #   - 为重定向的下载链接指定一个清晰的文件名。
 #   - 提供下载进度和错误处理。
@@ -27,7 +27,11 @@ catch {
 
 # 自动获取脚本文件所在的目录路径
 # $PSScriptRoot 是一个自动变量，代表当前脚本所在的文件夹
-$destinationFolder = $PSScriptRoot
+# --- 关键修改：替换 $PSScriptRoot ---
+# 在通过 iex 进行网络执行时，$PSScriptRoot 是空的，会导致错误。
+# 我们使用 $PWD.Path 来替代它，$PWD 代表 PowerShell 当前的工作目录 (Current Working Directory)。
+# 这样，文件就会被下载到你执行命令时所在的那个文件夹里。
+$destinationFolder = $PWD.Path
 
 Write-Host "文件将被下载到目录: $destinationFolder" -ForegroundColor Cyan
 
@@ -84,8 +88,8 @@ Write-Host "所有下载任务已处理完毕。" -ForegroundColor Cyan
 
 # --- 4. 软件安装 (Software Installation) ---
 
-# 定义软件安装包所在的目录
-$softwarePath = $PSScriptRoot
+# 定义软件安装包所在的目录 (这里也需要使用 $destinationFolder)
+$softwarePath = $destinationFolder
 # 假设WinRAR的安装文件名为 "winrar-x64.exe"，请根据实际情况修改
 $winrarInstaller = Join-Path $softwarePath "WinRAR v7.13 x64 SC.exe"
 
@@ -102,4 +106,5 @@ if (Test-Path $winrarInstaller) {
 }
 
 Write-Host "--- 软件安装阶段结束 ---`n"
-Read-Host -Prompt "按 Enter 键退出脚本..."
+# 在自动化脚本中，最后的 Read-Host 通常可以移除，除非你确实需要暂停
+# Read-Host -Prompt "按 Enter 键退出脚本..."
