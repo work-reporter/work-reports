@@ -101,6 +101,8 @@ if (Test-Path $winrarInstaller) {
     # 使用 /S 参数进行完全静默安装
     Start-Process $winrarInstaller -ArgumentList "/S" -Wait
     Write-Host "WinRAR 安装完成。"
+    # 安装完成后删除安装包
+    Remove-Item -Path $winrarInstaller -Force
 } else {
     Write-Host "警告: 未在 $winrarInstaller 找到WinRAR安装文件，跳过安装。"
 }
