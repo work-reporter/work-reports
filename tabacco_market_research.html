@@ -1,0 +1,623 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignobject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left: 0.25em solid rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+
+<title></title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='日本电子烟与加热不燃烧市场综合调研报告'><span>日本电子烟与加热不燃烧市场综合调研报告</span></h1><h2 id='1-关键名词术语与法律法规日中对照与释义'><span>1. 关键名词、术语与法律法规（日中对照与释义）</span></h2><p><span>为了准确理解日本独特的市场环境，以下列出报告中涉及的核心日文术语及其在法律和商业上的具体含义。</span></p><figure class='table-figure'><table><thead><tr><th style='text-align:left;' ><span>日文术语</span></th><th style='text-align:left;' ><span>中文术语</span></th><th style='text-align:left;' ><span>解释与备注</span></th></tr></thead><tbody><tr><td style='text-align:left;' ><strong><span>加熱式タバコ (Heated Tobacco Products - HTPs)</span></strong></td><td style='text-align:left;' ><strong><span>加热不燃烧烟草 / HNB</span></strong></td><td style='text-align:left;' ><span>使用真实烟叶原料，通过电力加热而非燃烧产生蒸汽（气溶胶）供吸食的产品（如IQOS, glo, Ploom）。</span><br><strong><span>法律地位</span></strong><span>：属于《烟草事业法》定义的“烟草制品”，合法销售但监管严格。</span></td></tr><tr><td style='text-align:left;' ><strong><span>電子タバコ (Electronic Cigarette / VAPE)</span></strong></td><td style='text-align:left;' ><strong><span>电子烟 / 雾化电子烟</span></strong></td><td style='text-align:left;' ><span>将液体雾化后送入人体肺部的电子装置。通常指使用烟油（Liquid）雾化的产品。在日本法律中，根据是否含有尼古丁被严格区分。</span><br><strong><span>法律地位</span></strong><span>：含尼古丁视为“医药品”（禁售）；不含尼古丁视为“杂货”（合法）。</span></td></tr><tr><td style='text-align:left;' ><strong><span>たばこ事業法</span></strong></td><td style='text-align:left;' ><strong><span>烟草事业法</span></strong></td><td style='text-align:left;' ><span>由财务省管辖。监管烟草产业的健全发展及税收。加热不燃烧产品受此法约束，涉及制造、特定销售业许可及税收。</span></td></tr><tr><td style='text-align:left;' ><strong><span>薬機法 (旧：薬事法)</span></strong></td><td style='text-align:left;' ><strong><span>药机法 (全称：关于医药品、医疗器械等的品质、有效性及安全性的确保等法律)</span></strong></td><td style='text-align:left;' ><span>由厚生劳动省管辖。</span><strong><span>含尼古丁</span></strong><span>的烟油被视为“医药品”，吸食设备被视为“医疗器械”。未经批准国内禁售。</span></td></tr><tr><td style='text-align:left;' ><strong><span>電気用品安全法 (PSE法)</span></strong></td><td style='text-align:left;' ><strong><span>电气用品安全法</span></strong></td><td style='text-align:left;' ><span>由经济产业省（METI）管辖。规定电气产品的安全标准。电子烟设备（含锂电池）若能量密度达标，必须通过PSE认证并粘贴标志。</span></td></tr><tr><td style='text-align:left;' ><strong><span>健康増進法</span></strong></td><td style='text-align:left;' ><strong><span>健康增进法</span></strong></td><td style='text-align:left;' ><span>规定公共场所吸烟限制（防止被动吸烟）的法律。加热不燃烧烟草受此法限制，原则上室内禁烟，但允许在特定的“加热式烟草专用吸烟室”内使用。此类空间允许在此吸食加热烟草，且通常允许饮食。</span></td></tr><tr><td style='text-align:left;' ><strong><span>製造たばこ特定販売業</span></strong></td><td style='text-align:left;' ><strong><span>制造烟草特定销售业</span></strong></td><td style='text-align:left;' ><span>海外厂商若要将其制造的烟草制品（如加热烟草制品）进口到日本进行批发销售，必须向財務大臣（税関長）申请特定许可资质。</span></td></tr><tr><td style='text-align:left;' ><strong><span>輸入確認証 (旧：薬監証明)</span></strong></td><td style='text-align:left;' ><strong><span>进口确认证 (药监证明)</span></strong></td><td style='text-align:left;' ><span>进口医药品时需向厚生劳动省地方局申请的证明。个人进口含尼古丁电子烟若超过规定数量（如1个月用量），必须出示此证，否则会被海关扣留。</span></td></tr><tr><td style='text-align:left;' ><strong><span>小型家電リサイクル法</span></strong></td><td style='text-align:left;' ><strong><span>小型家电回收法</span></strong></td><td style='text-align:left;' ><span>规定废弃小型电子设备回收利用的法律。电子烟设备及加热烟草主机正逐渐被纳入该法管理范畴。</span></td></tr><tr><td style='text-align:left;' ><strong><span>PMDA</span></strong></td><td style='text-align:left;' ><strong><span>独立行政法人医药品医疗器械综合机构</span></strong></td><td style='text-align:left;' ><span>负责医药品审查的机构。含尼古丁电子烟若要在日本合法销售，需通过其极其严格的审查。</span></td></tr><tr><td style='text-align:left;' ><strong><span>景品表示法</span></strong></td><td style='text-align:left;' ><strong><span>不当景品类及不当表示防止法</span></strong></td><td style='text-align:left;' ><span>旨在保护消费者权益的法律。它规范商家以虚假或夸大方式广告商品（不当表示），并限制过度赠品（景品），确保消费者能基于准确信息自主、合理地选择商品或服务。</span></td></tr></tbody></table></figure><hr /><h2 id='2-执行摘要'><span>2. 执行摘要</span></h2><p><span>日本的“新型烟草”市场呈现出</span><strong><span>二元分化</span></strong><span>的特征，由“加热不燃烧烟草（HTP）”和“雾化电子烟（Vape）”两个完全不同的法律和市场体系构成。</span></p><ul><li><p><strong><span>加热不燃烧 (HTP)</span></strong><span>：日本是全球最大的HTP市场之一。该类产品受《烟草事业法》监管，市场准入壁垒较高，主要由菲利普莫里斯（IQOS）、英美烟草（glo）和日本烟草（Ploom）三巨头垄断。2024年数据显示IQOS占据过半份额，但竞争正趋于“多极化”。该领域正面临2026年的税制改革（按重量征税）和2027年起的防卫财源增税，预计价格将大幅上涨。</span></p></li><li><p><strong><span>雾化电子烟 (Vape)</span></strong><span>：</span></p><ul><li><p><strong><span>含尼古丁产品</span></strong><span>：受《药机法》严格管控，被视为医药品。由于迄今无产品获批，日本国内</span><strong><span>禁止商业销售</span></strong><span>。仅允许消费者通过“个人进口”模式自用，且有严格的数量限制（如烟油120ml/月）。</span></p></li><li><p><strong><span>不含尼古丁产品</span></strong><span>：被视为“杂货”或“烟草类似制品”，无特殊准入许可，不需要缴纳烟草税。因健康、口味多样及低成本优势，市场正在快速增长，但也面临电气安全（PSE）和未来潜在的环保回收监管。</span></p></li></ul></li></ul><p><strong><span>市场现状</span></strong><span>方面，日本整体减害产品（包括加热不燃烧和其他新型烟草产品）增长迅猛，到2024财年市场规模约占烟草行业总销量的41.2% </span><a href='https://finance.sina.com.cn/stock/relnews/us/2025-03-02/doc-inenhnux4519794.shtml'><span>[58]</span></a><span>。消费者转换的主要原因是“气味少”、“期待降低健康风险”和“顾及他人”，尤其在20多岁的男性等年轻群体中普及。</span></p><hr /><h2 id='3-政策与法律监管框架'><span>3. 政策与法律监管框架</span></h2><p><span>日本的监管核心在于</span><strong><span>“是否使用烟叶”</span></strong><span>以及</span><strong><span>“是否含有尼古丁”</span></strong><span>。</span></p><h3 id='31-加热不燃烧烟草-htp-的监管'><span>3.1 加热不燃烧烟草 (HTP) 的监管</span></h3><ul><li><p><strong><span>监管归属</span></strong><span>：受财务省《烟草事业法》管辖。</span></p></li><li><p><strong><span>产品定义</span></strong><span>：使用烟叶作为原料，属于“制造烟草”分类 </span><a href='https://www.mhlw.go.jp/file/06-Seisakujouhou-10900000-Kenkoukyoku/0000201435.pdf'><span>[1]</span></a><span>。</span></p></li><li><p><strong><span>健康与使用限制</span></strong><span>：</span></p><ul><li><p><strong><span>被动吸烟对策</span></strong><span>：《健康增进法》将其列为监管对象。虽然限制较传统卷烟稍宽（允许在特定的“加热式烟草专用吸烟室”内边饮食边使用），但原则上室内公共场所禁止使用 </span><a href='https://kennet.mhlw.go.jp/information/information/tobacco/t-02-008.html'><span>[6]</span></a><span>。</span></p></li><li><p><strong><span>健康风险评估</span></strong><span>：厚生劳动省指出，虽然其产生的气溶胶中致癌物质（如甲醛、苯）含量低于卷烟，但仍含有尼古丁且具成瘾性。官方立场是“长期健康影响尚不明确，需持续观察” </span><a href='https://www.mhlw.go.jp/file/06-Seisakujouhou-10900000-Kenkoukyoku/0000201435.pdf'><span>[1]</span></a><a href='https://ganjoho.jp/public/pre_scr/cause_prevention/smoking/tobacco04.html'><span>[3]</span></a><span>。</span></p></li></ul></li></ul><h3 id='32-雾化电子烟-vape-的监管'><span>3.2 雾化电子烟 (Vape) 的监管</span></h3><h4 id='a-含尼古丁电子烟'><span>A. 含尼古丁电子烟</span></h4><ul><li><p><strong><span>监管归属</span></strong><span>：受厚生劳动省《药机法》管辖。</span></p></li><li><p><strong><span>法律定义</span></strong><span>：</span></p><ul><li><p><strong><span>烟油</span></strong><span>：视为“医药品”。</span></p></li><li><p><strong><span>雾化设备</span></strong><span>：视为“医疗器械” </span><a href='https://www.jcpra.or.jp/Portals/0/resource/00oshirase/pdf/pla/rythium_cs2020_07.pdf'><span>[8]</span></a><a href='https://www.watch.impress.co.jp/docs/news/1314477.html'><span>[9]</span></a><span>。</span></p></li></ul></li><li><p><strong><span>日本国内销售禁令</span></strong><span>：在日本国内制造、销售此类产品需获得厚生劳动大臣的批准（PMDA审查）。由于审批极其严格（需临床试验数据等），截至目前</span><strong><span>尚无任何一款含尼古丁电子烟获得批准</span></strong><span>。因此，国内合法的商业销售实际上是被禁止的 </span><a href='https://ganjoho.jp/public/pre_scr/cause_prevention/smoking/tobacco04.html'><span>[3]</span></a><span>。</span></p></li><li><p><strong><span>个人进口特例</span></strong><span>：法律允许个人以“自用”为目的从海外进口，但有严格限制（详见第4章）。</span></p></li></ul><h4 id='b-不含尼古丁电子烟'><span>B. 不含尼古丁电子烟</span></h4><ul><li><p><strong><span>监管归属</span></strong><span>：不受《烟草事业法》或《药机法》监管。</span></p></li><li><p><strong><span>法律定义</span></strong><span>：属于“杂货”或“烟草类似制品”。</span></p></li><li><p><strong><span>销售与广告</span></strong><span>：</span></p><ul><li><p><span>无需特殊许可即可制造或销售。</span></p></li><li><p><span>不受《未成年人吸烟禁止法》约束（无法律强制年龄限制），但行业普遍自主规定不向20岁以下人群销售。</span></p></li><li><p><strong><span>广告限制</span></strong><span>：不得宣称具有“戒烟效果”或医疗功效，否则违反《药机法》。主流电商平台和广告平台对电子烟类目通常有限制。</span></p></li><li><p><strong><span>使用场所</span></strong><span>：虽不受法律强制禁烟令约束，但公共交通、多数餐饮店通常依管理方规定禁止使用 </span><a href='https://kennet.mhlw.go.jp/information/information/tobacco/t-02-008.html'><span>[6]</span></a><span>。</span></p></li></ul></li></ul><hr /><h2 id='4-市场准入与进口制度market-entry'><span>4. 市场准入与进口制度（Market Entry）</span></h2><h3 id='41-加热不燃烧-htp-的商业准入'><span>4.1 加热不燃烧 (HTP) 的商业准入</span></h3><p><span>对于海外制造商而言，进入日本HTP市场的门槛较高。</span></p><ul><li><p><strong><span>制造许可</span></strong><span>：日本国内的烟草制造权由日本烟草产业（JT）独家许可。</span></p></li><li><p><strong><span>进口销售许可（特定销售业）</span></strong><span>：</span></p><ul><li><p><span>海外厂商（如IQOS, glo）需向财务大臣申请注册为</span><strong><span>“制造烟草特定销售业者”</span></strong><span>，方可将进口产品批发给国内零售商 </span><a href='https://www.customs.go.jp/tokyo/content/tabako_annai.pdf'><span>[55]</span></a><span>。</span></p></li><li><p><strong><span>申请窗口</span></strong><span>：主事务所所在地的海关烟草事务部门。</span></p></li><li><p><strong><span>注册税</span></strong><span>：每件 </span><strong><span>150,000日元</span></strong><span>。</span></p></li><li><p><strong><span>审查标准（欠格事由）</span></strong><span>：申请法人及其高管不得有烟草法违反记录（罚金刑结束未满2年）、破产未复权等情况。</span></p></li><li><p><strong><span>审查周期</span></strong><span>：通常为申请受理月的</span><strong><span>次月月底前</span></strong><span>。</span></p></li></ul></li></ul><h3 id='42-含尼古丁电子烟的个人进口跨境电商模式'><span>4.2 含尼古丁电子烟的个人进口（跨境电商模式）</span></h3><p><span>由于国内禁售，市场主要依赖“个人进口”。必须严格遵守以下海关与厚生劳动省规定的</span><strong><span>“1个月使用量”</span></strong><span>上限。若超过此限额，需提前申请“进口确认证（药监证明）”，否则无法通关。</span></p><p><strong><span>无需“进口确认证”的通关上限：</span></strong></p><ol start='' ><li><p><strong><span>尼古丁烟油</span></strong><span>：</span><strong><span>120 ml</span></strong><span> 以内。</span></p></li><li><p><strong><span>尼古丁烟弹/カートリッジ</span></strong><span>：</span><strong><span>60 个</span></strong><span> 以内。</span></p></li><li><p><strong><span>一次性电子烟</span></strong><span>：换算为吸引次数，约 </span><strong><span>12,000 口 (Puffs)</span></strong><span> 以内。</span></p></li><li><p><strong><span>雾化设备 (Device)</span></strong><span>：</span><strong><span>1 台</span></strong><span>（如需备用最多可追加1台，共2台）。</span></p></li></ol><p><strong><span>重要提示</span></strong><span>：</span></p><ul><li><p><strong><span>合算原则</span></strong><span>：若同时进口烟油和烟弹，需合并计算是否超过1个月用量。</span></p></li><li><p><strong><span>“1个月”的定义</span></strong><span>: 并非指自然月，而是从个人进口（通关）之日起计算的1个月（或30天）。</span></p></li><li><p><strong><span>严禁转售</span></strong><span>：个人进口仅限本人使用。</span><strong><span>禁止转卖、转让（包括送礼）或共同购买</span></strong><span>，违者将触犯《药机法》面临刑罚。</span></p></li></ul><h3 id='43-不含尼古丁电子烟'><span>4.3 不含尼古丁电子烟</span></h3><ul><li><p><strong><span>准入</span></strong><span>：作为“杂货”进口，无特殊准入壁垒。但需注意电气安全认证（PSE）及各电商平台的类目限制。</span></p></li><li><p><strong><span>限制</span></strong><span>：主流电商平台（如日本亚马逊、乐天）及广告平台对电子烟类目有严格限制，通常禁止推广类似烟草的产品。</span></p></li></ul><hr /><h2 id='5-认证与安全标准'><span>5. 认证与安全标准</span></h2><h3 id='51-电气用品安全法-pse法'><span>5.1 电气用品安全法 (PSE法)</span></h3><p><span>无论是加热烟草设备还是电子烟设备，只要内置锂离子电池并满足特定条件，必须符合PSE法。</span></p><ul><li><p><strong><span>适用对象</span></strong><span>：</span></p><ul><li><p><strong><span>AC适配器/充电器</span></strong><span>：需符合“特定电气用品”标准（</span><strong><span>菱形PSE标志</span></strong><span>） </span><a href='https://www.chaholog.com/%E9%9B%BB%E5%AD%90%E3%82%BF%E3%83%90%E3%82%B3%E3%81%AE%E6%B3%95%E7%9A%84%E8%A7%A3%E9%87%88/'><span>[28]</span></a><span>。</span></p></li><li><p><strong><span>内置电池的主机</span></strong><span>：若锂电池体积能量密度在 </span><strong><span>400Wh/L以上</span></strong><span>（大多数Vape设备），被视为“移动电源”类产品，需符合“特定电气用品以外的电气用品”标准（</span><strong><span>圆形PSE标志</span></strong><span>） </span><a href='https://www.elecom.co.jp/pickup/mobile_battery/basic17.html'><span>[30]</span></a><span>。</span></p></li></ul></li><li><p><strong><span>合规流程</span></strong><span>：进口商需向经济产业省（METI）备案（事业申报） -&gt; 确保产品符合技术基准（检测） -&gt; 保存自主检查记录 -&gt; 在产品上标注PSE标志。</span></p></li><li><p><strong><span>罚则</span></strong><span>：销售无PSE标志产品，个人处1年以下徒刑或100万日元以下罚金，</span><strong><span>法人最高可处1亿日元罚金</span></strong><span> </span><a href='https://ledvision-lab.com/pse%E9%81%95%E5%8F%8D%E3%81%AE%E7%BD%B0%E5%89%87%E3%81%A8%E3%83%AA%E3%82%B9%E3%82%AF%EF%BD%9C%E4%BA%8B%E6%A5%AD%E8%80%85%E3%81%8C%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D-2/'><span>[26]</span></a><span>。</span></p></li></ul><h3 id='52-行业自主标准'><span>5.2 行业自主标准</span></h3><ul><li><p><strong><span>日本吸烟具协会</span></strong><span>：设立了“充电型VAPE型式确认检查制度”。针对发热、起火风险，对VAPE本体及电池进行物理/电气安全检测（如跌落、过充测试）。通过检测的产品可标注“自主安全评价基准适合品”标志，并附带PL保险（产品责任险） </span><a href='http://www.jsaca.or.jp/upload/201904021155221620668055.pdf'><span>[1]</span></a><span>。</span></p></li><li><p><strong><span>成分检测</span></strong><span>：建议通过第三方权威机构（如JFRL、SGS）进行检测，证明“不含尼古丁”以及甲醛、重金属等有害物质合规，以作为市场推广的合规背书。</span></p></li></ul><hr /><h2 id='6-税制与税费'><span>6. 税制与税费</span></h2><h3 id='61-加热不燃烧烟草-htp-以往的税制2018-2025'><span>6.1 加热不燃烧烟草 (HTP) 以往的税制（2018-2025）</span></h3><p><span>加热式烟草根据《烟草税法》属于征税对象。2018年10月的税制改革中，新设了“加热式烟草”这一类别。</span></p><ul><li><p><strong><span>现行征税方式</span></strong><span>:</span></p><ul><li><p><span>与传统卷烟按“每支〇日元”的数量征税不同，加热式烟草是根据烟弹的“</span><strong><span>重量</span></strong><span>”和“</span><strong><span>零售价格</span></strong><span>”，换算成等同于传统卷烟的支数后计算税额 </span><a href='https://liberty-flights.shop/column/regulation/regulation02/'><span>[9]</span></a><a href='https://www.city.kashiwa.lg.jp/shiminzei/jigyosha/zeikin/tabako/tabako.html'><span>[11]</span></a><span> 。</span></p></li><li><p><span>由于这种方式，许多加热式烟草的税负比同价位的传统卷烟要轻 </span><a href='https://www.nta.go.jp/information/other/data/h29/tabacco/03.htm'><span>[27]</span></a><a href='https://healthy-sp-usa.com/column/detail.php?id=45'><span>[12]</span></a><span> 。据估算，一盒580日元的传统卷烟税负约为61.7%（含消费税），而加热式烟草则约为47.2% </span><a href='https://kbkk.org/column/「加熱式タバコ」と「電子タバコ」はどこがどう.html'><span>[3]</span></a><span> 。</span></p></li></ul></li></ul><h3 id='62-加热不燃烧烟草-htp-的税制改革2026-2029改革'><span>6.2 加热不燃烧烟草 (HTP) 的税制改革（2026-2029改革）</span></h3><p><span>目前HTP税负低于卷烟（约47% vs 61%），为纠正这种税制差距，政府计划通过两阶段改革来增加税收。</span></p><h4 id='第一阶段课税方式根本性变更2026年'><span>第一阶段：课税方式根本性变更（2026年）</span></h4><p><span>旨在消除与卷烟的税负不公，废除“价格”换算，改为</span><strong><span>全量“重量”换算</span></strong><span>。</span></p><ul><li><p><strong><span>实施时间</span></strong><span>：</span></p><ul><li><p><strong><span>2026年4月1日</span></strong><span>：新旧计算方式各占50%的过渡期。</span></p></li><li><p><strong><span>2026年10月1日</span></strong><span>：全面实施新方式。</span></p></li></ul></li><li><p><strong><span>新计算公式</span></strong><span>：</span></p><ul><li><p><strong><span>棒状（Stick型，如IQOS TEREA）</span></strong><span>：</span></p><ul><li><p><span>每支重量 </span><strong><span>0.35g</span></strong><span> = 换算为卷烟 </span><strong><span>0.7支</span></strong><span>。</span></p></li><li><p><strong><span>最低课税</span></strong><span>：若单支重量&lt;0.35g，强制按0.35g计算（即最低按0.7支卷烟征税）。</span></p></li></ul></li><li><p><strong><span>非棒状（如Ploom Tech胶囊）</span></strong><span>：</span></p><ul><li><p><span>填充物 </span><strong><span>1g</span></strong><span> = 换算为卷烟 </span><strong><span>2支</span></strong><span>。</span></p></li><li><p><strong><span>最低课税</span></strong><span>：若每箱重量&lt;4g，强制按卷烟20支征税。</span></p></li></ul></li></ul></li><li><p><strong><span>价格影响</span></strong><span>：预计每盒涨价20~40日元。</span></p></li></ul><h4 id='第二阶段防卫财源增税2027年-2029年'><span>第二阶段：防卫财源增税（2027年-2029年）</span></h4><p><span>为了确保1万亿日元的防卫预算，将在上述改制基础上，对所有烟草制品（含HTP）进行从量增税。</span></p><ul><li><p><strong><span>增税幅度</span></strong><span>：合计每支增税 </span><strong><span>3日元</span></strong><span>（国税+地方税调整）。</span></p></li><li><p><strong><span>时间表</span></strong><span>：</span></p><ul><li><p><span>2027年4月：+0.5日元/支</span></p></li><li><p><span>2028年4月：+0.5日元/支</span></p></li><li><p><span>2029年4月：+0.5日元/支。</span></p></li></ul></li><li><p><strong><span>最终影响</span></strong><span>：结合两阶段改革，每盒（20支装）预计最终涨价约 </span><strong><span>60日元以上</span></strong><span>。</span></p></li></ul><h3 id='63-电子烟-vape-的税费'><span>6.3 电子烟 (Vape) 的税费</span></h3><ul><li><p><strong><span>不含尼古丁</span></strong><span>：不属于烟草制品，</span><strong><span>不征收烟草税</span></strong><span>。仅征收10%的消费税。这是其相比HTP最大的成本优势。</span></p></li></ul><hr /><h2 id='7-市场现状与动向'><span>7. 市场现状与动向</span></h2><h3 id='71-加热不燃烧-htp-市场'><span>7.1 加热不燃烧 (HTP) 市场</span></h3><p><span>日本是HTP技术竞争最激烈的成熟市场。2024年数据显示，2024年日本整体减害产品（包括加热不燃烧和其他新型烟草产品）市场规模约占烟草行业总量的41.2% </span><a href='https://finance.sina.com.cn/stock/relnews/us/2025-03-02/doc-inenhnux4519794.shtml'><span>[58]</span></a><span>。</span>
+<span>加热式烟草已不再是“替代品”，而是日本烟草市场的“半壁江山”。随着技术改进和健康意识（及社会压力）的增加，预计在未来2-3年内，其份额有望正式超越传统卷烟。</span></p><ul><li><p><strong><span>市场份额 (2024年估算)</span></strong><span>：</span></p><ul><li><p><strong><span>IQOS (Philip Morris)</span></strong><span>: </span><strong><span>51.71%</span></strong><span>。尽管份额略有下降，仍保持绝对优势。2024年3月推出的“</span><strong><span>IQOS ILUMA i</span></strong><span>”系列搭载了</span><strong><span>触摸屏</span></strong><span>和可暂停吸烟的“</span><strong><span>暂停模式</span></strong><span>”。</span></p></li><li><p><strong><span>glo (BAT)</span></strong><span>: </span><strong><span>25.9%</span></strong><span>。主打高性价比。2023年12月推出的“</span><strong><span>glo™ hyper pro</span></strong><span>”首次搭载了液晶屏“</span><strong><span>EASYVIEW™屏幕</span></strong><span>”，提升了操作性。设备经常降价至980-2980日元，同时提供400日元价位的烟弹，强调使用成本的低廉。</span></p></li><li><p><strong><span>Ploom (JT)</span></strong><span>: </span><strong><span>13.65%</span></strong><span>。2023年11月推出的“</span><strong><span>Ploom X ADVANCED</span></strong><span>”采用新的“</span><strong><span>POWER HEATFLOW</span></strong><span>”加热技术，将最高加热温度提升至约320℃，增强了吸食口感，份额稳步提升。</span></p></li></ul></li><li><p><strong><span>用户画像</span></strong><span>：20-30岁男性渗透率最高（&gt;50%）。高收入群体倾向显著。女性吸烟者仍倾向于传统卷烟。</span></p></li><li><p><strong><span>消费习惯</span></strong><span>：约10%的用户为“双重吸烟者”（同时使用卷烟和HTP），主要原因为HTP在某些场合（如车内、家中）更方便且气味小。</span></p></li><li><p><strong><span>口感进化</span></strong><span>：2025年后期推出的新一代产品（如 glo Hilo 和 Ploom AURA）在烟雾量和“击喉感”上更接近纸烟，吸引了最后一批坚守纸烟的资深烟民。</span></p></li></ul><h3 id='72-电子烟-vape-市场'><span>7.2 电子烟 (Vape) 市场</span></h3><ul><li><p><strong><span>增长动力</span></strong><span>：健康意识（无焦油）、口味丰富（水果/甜点味）、无烟草税带来的低成本。</span></p></li><li><p><strong><span>市场规模</span></strong><span>：预测年均增长率（CAGR）可达30%左右。一次性大口数产品近期非常流行。</span></p></li><li><p><strong><span>渠道</span></strong><span>：主要通过唐吉诃德（Don Quijote）等线下杂货店、Vape专卖店以及亚马逊、乐天等电商平台销售（仅限不含尼古丁）。</span></p></li></ul><h3 id='73-消费者动向'><span>7.3 消费者动向</span></h3><p><span>消费者从传统卷烟转向加热式烟草的背后，反映了对健康问题和他人感受的关注。</span></p><ul><li><p><strong><span>主要转换原因</span></strong><span>:</span></p><ul><li><p><strong><span>气味少</span></strong><span>: “没有烟味”被认为是最大的优点，在一项调查中，有29.6%的受访者将其列为首要原因。不易附着在头发和衣物上的气味也很有吸引力。</span></p></li><li><p><strong><span>期待降低健康风险</span></strong><span>: 有48.2%的人认为加热式烟草“减少了90%的有害物质”，对“减少自身健康负面影响”的期待是重要动机。但加热式烟草同样含有尼古丁，其长期健康影响尚不明确 </span><a href='https://www.mhlw.go.jp/file/06-Seisakujouhou-10900000-Kenkoukyoku/0000201435.pdf'><span>[1]</span></a><a href='https://ganjoho.jp/public/pre_scr/cause_prevention/smoking/tobacco04.html'><span>[3]</span></a><span>。</span></p></li><li><p><strong><span>顾及他人</span></strong><span>: 由于烟雾较少，“对周围人的危害较小”这一认知也推动了消费者的转换。</span></p></li></ul></li><li><p><strong><span>各年龄段与性别的用户特征</span></strong><span>:</span></p><ul><li><p><span>加热式烟草的使用在年轻男性中尤为普遍。有调查显示，20多岁的男性吸烟者中，超过五成使用加热式烟草。在20至39岁的男性吸烟者中，约占四成。</span></p></li><li><p><span>高收入人群的使用率也较高。</span></p></li><li><p><span>另一方面，据报道，所有年龄段的女性吸烟者仍更偏爱传统卷烟。</span></p></li></ul></li></ul><hr /><h2 id='8-废弃与环保问题'><span>8. 废弃与环保问题</span></h2><p><span>随着设备普及，锂电池废弃引发的火灾事故激增，环保监管正在收紧。</span></p><ul><li><p><strong><span>现状</span></strong><span>：目前处理方式混乱，许多自治体将其视为“有害垃圾”或拒绝回收。</span></p></li><li><p><strong><span>未来法规</span></strong><span>：日本政府已确定方针，计划从 </span><strong><span>2026年度</span></strong><span> 起，将“加热式烟草机器”及“电子烟机器”正式纳入 </span><strong><span>《小型家电回收法》</span></strong><span> 的对象品目 </span><a href='https://mizoguchi-jigyou.com/kogatakaden-news/'><span>[53]</span></a><span>。</span></p></li><li><p><strong><span>企业责任</span></strong><span>：未来制造商和进口商可能面临强制回收义务。目前JT、BAT和PMI已开展自主回收项目（如JBRC回收点、IQOS回收计划）。</span></p></li></ul><hr /><h2 id='9-进入日本市场的实务建议与风险提示'><span>9. 进入日本市场的实务建议与风险提示</span></h2><h3 id='91-针对不同产品的策略'><span>9.1 针对不同产品的策略</span></h3><ol start='' ><li><p><strong><span>含尼古丁电子烟</span></strong><span>：</span></p><ul><li><p><strong><span>唯一路径</span></strong><span>：</span><strong><span>跨境电商（个人进口）</span></strong><span>。</span></p></li><li><p><strong><span>操作要点</span></strong><span>：需搭建独立站或利用允许此类商品的跨境平台。物流必须选择能够处理敏感货且懂“通关限额”的渠道。</span></p></li><li><p><strong><span>红线</span></strong><span>：绝不能在日本国内设立仓库发货，绝不能进行B2B一般贸易进口。</span></p></li></ul></li><li><p><strong><span>不含尼古丁电子烟</span></strong><span>：</span></p><ul><li><p><strong><span>路径</span></strong><span>：一般贸易进口、线下线上全渠道铺货。</span></p></li><li><p><strong><span>核心竞争力</span></strong><span>：口味本土化（薄荷、茶香、清淡果味）、品牌设计（针对年轻层）、PSE合规。</span></p></li></ul></li><li><p><strong><span>加热不燃烧周边（兼容机/周边）</span></strong><span>：</span></p><ul><li><p><strong><span>机会</span></strong><span>：针对IQOS/Ploom的兼容设备或配件（需注意专利规避）。</span></p></li></ul></li></ol><h3 id='92-必须注意的合规风险'><span>9.2 必须注意的合规风险</span></h3><ul><li><p><strong><span>包装与宣传</span></strong><span>：严禁使用“戒烟”、“治疗”等医疗用语（违反药机法）。避免过度吸引未成年人的卡通设计。包装上建议标注“20岁以下禁止使用”。</span></p></li><li><p><strong><span>税务合规</span></strong><span>：HNB产品务必找专业税务师进行重量换算，错误申报会导致巨额追缴和罚款。</span></p></li><li><p><strong><span>PSE认证</span></strong><span>：这是硬件销售的硬门槛。无PSE标志的产品一旦被查，将面临召回和高额罚款，甚至刑责。</span></p></li><li><p><strong><span>检测报告</span></strong><span>：务必持有权威的“无尼古丁证明”以应对海关抽检和电商平台审核。</span></p></li></ul><hr /><h2 id='10-参考资料'><span>10. 参考资料</span></h2><h3 id='日语资料'><span>日语资料</span></h3><ol start='' ><li><p><a href='https://www.mhlw.go.jp/file/06-Seisakujouhou-10900000-Kenkoukyoku/0000201435.pdf'><span>厚生労働省: 加熱式タバコの健康影響等について</span></a><span> / </span><a href='http://www.jsaca.or.jp/upload/201904021155221620668055.pdf'><span>日本喫煙具協会</span></a></p></li><li><p><a href='https://drvape.jp/shop/pages/column_2408_bad'><span>DR.VAPE: 加熱式タバコの市場動向</span></a><span> / </span><a href='http://www.jsaca.or.jp/news-contents.php?id=105'><span>日本喫煙具協会ニュース</span></a></p></li><li><p><a href='https://ganjoho.jp/public/pre_scr/cause_prevention/smoking/tobacco04.html'><span>国立がん研究センター: 加熱式たばこ</span></a></p></li><li><p><a href='https://www.kamimutsukawa.com/blog2/kokyuuki/2146/'><span>呼吸器内科ブログ</span></a><span> / </span><a href='https://prtimes.jp/main/html/rd/p/000000004.000135659.html'><span>PR Times</span></a></p></li><li><p><a href='https://www.jrs.or.jp/information/file/hikanetsu_kenkai_kaitei.pdf'><span>日本呼吸器学会: 非燃焼・加熱式タバコや電子タバコに対する見解</span></a></p></li><li><p><a href='https://kennet.mhlw.go.jp/information/information/tobacco/t-02-008.html'><span>e-ヘルスネット</span></a><span> / </span><a href='https://kakakumag.com/hobby/?id=9669'><span>Kakaku.com</span></a></p></li><li><p><a href='https://healthprom.jadecom.or.jp/wp/wp-content/uploads/2020/03/papers_20200115.pdf'><span>地域医療振興協会</span></a></p></li><li><p><a href='https://www.jcpra.or.jp/Portals/0/resource/00oshirase/pdf/pla/rythium_cs2020_07.pdf'><span>JCPRA: 小型充電式電池のリサイクル</span></a></p></li><li><p><a href='https://www.watch.impress.co.jp/docs/news/1314477.html'><span>Watch Impress: 加熱式タバコ規制</span></a><span> / </span><a href='https://liberty-flights.shop/column/regulation/regulation02/'><span>Liberty Flights</span></a></p></li><li><p><a href='https://www.mhlw.go.jp/content/000623066.pdf'><span>厚生労働省: ニコチンを含まない電子タバコ</span></a></p></li><li><p><a href='https://news.kakaku.com/prdnews/cd=other/ctcd=6598/id=104682/'><span>価格.com ニュース</span></a></p></li><li><p><a href='https://prtimes.jp/main/html/rd/p/000000882.000104306.html'><span>PR Times: 喫煙実態調査</span></a></p></li><li><p><a href='https://www.jet.or.jp/qa_cs/'><span>JET: 電気用品安全法</span></a></p></li><li><p><a href='https://ew.intertek-jpn.com/media/electric_law_pse/'><span>Intertek: PSEマーク</span></a><span> / </span><a href='https://dmp.intimatemerger.com/rank/posts/1320'><span>Intimate Merger</span></a></p></li><li><p><a href='https://www.niph.go.jp/journal/data/69-2/202069020008.pdf'><span>国立保健医療科学院</span></a><span> / </span><a href='https://www.mipro.or.jp/Import/qanda/itmes/goods/q22.html'><span>MIPRO</span></a></p></li><li><p><a href='https://www.re-tem.com/ecotimes/column/feb2021/'><span>公正取引委員会/Re-Tem</span></a></p></li><li><p><a href='https://www.mof.go.jp/policy/tab_salt/tobacco/tobacco_tokuhan_touroku.html'><span>財務省: 製造たばこ特定販売業の登録</span></a></p></li><li><p><a href='https://www.meti.go.jp/policy/consumer/seian/denan/subject02.html'><span>経済産業省: 電気用品安全法</span></a></p></li><li><p><a href='https://www.jqa.jp/service_list/safety/service/mandatory/pse/'><span>JQA: PSE適合性検査</span></a></p></li><li><p><a href='https://eco-mitsui.jp/useful/202308%E2%88%92electronic%E2%88%92cigarette/'><span>Eco-Mitsui</span></a></p></li><li><p><a href='https://jokervapeshop.com/%E6%97%A5%E6%9C%AC%E3%81%AB%E3%81%8A%E3%81%91%E3%82%8B%E3%83%99%E3%82%A4%E3%83%97%E3%81%AE%E9%81%95%E6%B3%95%E6%80%A7%E3%81%A8%E6%B3%A8%E6%84%8F%E7%82%B9/'><span>Joker Vape Shop / 京都市</span></a></p></li><li><p><a href='https://www.meti.go.jp/policy/consumer/seian/denan/file/06_guide/seller_guide01.pdf'><span>経済産業省: 事業者ガイド</span></a></p></li><li><p><a href='https://www.rclo.jp/general/report/cat42/170/'><span>RCLO: PSE法規制</span></a></p></li><li><p><a href='https://www.clubjt.jp/media/content/CODE11150/'><span>CLUB JT / 税関</span></a></p></li><li><p><a href='https://relazo.net/throwaway/'><span>Relazo</span></a></p></li><li><p><a href='https://ledvision-lab.com/pse%E9%81%95%E5%8F%8D%E3%81%AE%E7%BD%B0%E5%89%87%E3%81%A8%E3%83%AA%E3%82%B9%E3%82%AF%EF%BD%9C%E4%BA%8B%E6%A5%AD%E8%80%85%E3%81%8C%E7%9F%A5%E3%81%A3%E3%81%A6%E3%81%8A%E3%81%8F%E3%81%B9%E3%81%8D-2/'><span>LED Vision Lab: PSE違反罰則</span></a></p></li><li><p><a href='https://www.clubjt.jp/media/content/CODE11018/'><span>CLUB JT: 法律・マナー</span></a><span> / </span><a href='https://www.nta.go.jp/information/other/data/h29/tabacco/03.htm'><span>国税庁</span></a></p></li><li><p><a href='https://www.chaholog.com/%E9%9B%BB%E5%AD%90%E3%82%BF%E3%83%90%E3%82%B3%E3%81%AE%E6%B3%95%E7%9A%84%E8%A7%A3%E9%87%88/'><span>Chaholog</span></a></p></li><li><p><a href='https://www.vill.nakasatsunai.hokkaido.jp/kurashi/zeikin/tabakozei/'><span>中札内村: たばこ税</span></a></p></li><li><p><a href='https://www.elecom.co.jp/pickup/mobile_battery/basic17.html'><span>Elecom</span></a><span> / </span><a href='http://www.kazumasaoguro.com/20231206Sankei.pdf'><span>Kazumasa Oguro</span></a></p></li><li><p><a href='https://lithium-btry.com/pse'><span>Lithium-btry.com</span></a></p></li><li><p><a href='https://www.mhlw.go.jp/topics/2010/08/tp0819-2.html'><span>厚生労働省</span></a></p></li><li><p><a href='https://jp.litime.com/blogs/knowledge/what-is-pse-mark'><span>Litime</span></a></p></li><li><p><a href='https://principles-certification.com/2020/02/15/pse%EF%BC%88%E9%9B%BB%E6%B0%97%E7%94%A8%E5%93%81%E5%AE%89%E5%85%A8%E6%B3%95%EF%BC%89%E3%81%AB%E9%96%A2%E3%81%99%E3%82%8B%E5%9F%BA%E7%A4%8E%E7%9F%A5%E8%AD%98%E3%80%81pse%E3%83%9E%E3%83%BC%E3%82%AF/'><span>Principles Certification</span></a></p></li><li><p><a href='https://www.soumu.go.jp/main_content/000770835.pdf'><span>総務省</span></a></p></li><li><p><a href='https://www.royal-co.net/luper/pse/gimu.php'><span>Royal Co</span></a></p></li><li><p><a href='https://www.city.sapporo.jp/seiso/gomi/koden.html'><span>札幌市: ゴミ出しルール</span></a></p></li><li><p><a href='https://www.jcpra.or.jp/study/battery/'><span>JCPRA: 電池のリサイクル</span></a></p></li><li><p><a href='https://prtimes.jp/main/html/rd/p/000000096.000043993.html'><span>PR Times</span></a></p></li><li><p><a href='https://jp.iqos.com/news/recycle'><span>IQOS Recycle</span></a></p></li><li><p><a href='https://jp.iqos.com/shop/catalogue/iluma/accessories'><span>IQOS Accessories</span></a></p></li><li><p><a href='https://www.city.ikoma.lg.jp/0000018672.html'><span>生駒市: たばこ税改正</span></a></p></li><li><p><a href='https://eleminist.com/article/2911'><span>Eleminist</span></a></p></li><li><p><a href='https://www.city.kagoshima.lg.jp/shigenseisaku/gomi/kate/dashikata/wakekata/kogatajyudennti.html'><span>鹿児島市: 小型充電式電池</span></a></p></li><li><p><a href='https://www.tioj.or.jp/recycling/index.html'><span>日本たばこ協会: リサイクル</span></a></p></li><li><p><a href='https://smoko.com/ja/blogs/news/environmental-impact-of-disposable-e-cigarettes'><span>Smoko: 環境影響と市場</span></a></p></li><li><p><a href='https://www.city.hamamatsu.shizuoka.jp/ippai/gomi/dashikata/dashikata/deteil.html'><span>浜松市</span></a></p></li><li><p><a href='https://www.city.fukuoka.lg.jp/kankyo/jigyokeigomi/life/katei-bunbetsu/moenaigomi.html'><span>福岡市</span></a></p></li><li><p><a href='https://www.oricon.co.jp/special/69492/'><span>Oricon</span></a></p></li><li><p><a href='https://www.greenpeace.org/japan/news/story_55637/'><span>Greenpeace</span></a></p></li><li><p><a href='https://nic.beyondvape.com/blogs/13034/'><span>Beyond Vape</span></a></p></li><li><p><a href='https://jp.iqos.com/support/faq/how-to-disposal-tobacco-stick'><span>IQOS Support</span></a></p></li><li><p><a href='https://mizoguchi-jigyou.com/kogatakaden-news/'><span>溝口事業: 小型家電ニュース</span></a></p></li><li><p><a href='https://relazo.net/glo_throwaway/'><span>Relazo: glo廃棄</span></a></p></li><li><p><a href='https://www.customs.go.jp/tokyo/content/tabako_annai.pdf'><span>製造たばこに関する特定販売業の登録手続きについて</span></a></p></li></ol><h3 id='中文资料'><span>中文资料</span></h3><ol start='56' ><li><p><a href='https://zhuanlan.zhihu.com/p/401037954'><span>HNB与雾化，电子烟两大技术路线之争</span></a></p></li><li><p><a href='https://zhuanlan.zhihu.com/p/1923355617227183748'><span>越来越多的年轻人不吸烟了，传统烟草未来如何？</span></a></p></li><li><p><a href='https://finance.sina.com.cn/stock/relnews/us/2025-03-02/doc-inenhnux4519794.shtml'><span>新兴产业行业研究周报：日本烟草、奥驰亚披露2024年报 新型烟草业务保持增长</span></a></p></li></ol></div></div>
+</body>
+</html>
