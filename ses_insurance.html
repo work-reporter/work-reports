@@ -1,0 +1,1020 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>东京 SES 项目进场保险成本影响报告</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;
+      --card:#ffffff;
+      --text:#182230;
+      --muted:#667085;
+      --line:#e5e7eb;
+      --primary:#0f4c81;
+      --primary2:#087ea4;
+      --deep:#101828;
+      --green:#067647;
+      --amber:#b54708;
+      --red:#b42318;
+      --blueSoft:#e0f2fe;
+      --greenSoft:#dcfae6;
+      --amberSoft:#fef0c7;
+      --redSoft:#fee4e2;
+      --graySoft:#f2f4f7;
+      --shadow:0 14px 36px rgba(16,24,40,.08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.72;
+    }
+    a{color:var(--primary2);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .topbar{
+      position:sticky;top:0;z-index:20;
+      background:rgba(255,255,255,.94);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      max-width:1180px;margin:0 auto;padding:12px 20px;
+      display:flex;align-items:center;gap:14px;
+    }
+    .brand{font-weight:850;color:var(--primary);white-space:nowrap;display:flex;align-items:center;gap:10px}
+    .brand span{
+      width:32px;height:32px;border-radius:10px;display:inline-grid;place-items:center;
+      color:#fff;background:linear-gradient(135deg,var(--primary),var(--primary2));box-shadow:0 8px 18px rgba(8,126,164,.22);
+    }
+    .navlinks{display:flex;gap:3px;overflow:auto;scrollbar-width:thin}
+    .navlinks a{font-size:13px;color:#344054;padding:8px 10px;border-radius:999px;white-space:nowrap}
+    .navlinks a:hover{background:#eef6fb;text-decoration:none;color:var(--primary)}
+    .hero{
+      color:#fff;
+      background:
+        radial-gradient(circle at 15% 10%,rgba(14,165,233,.28),transparent 32%),
+        radial-gradient(circle at 85% 18%,rgba(245,158,11,.21),transparent 25%),
+        linear-gradient(135deg,#0b1220 0%,#123f66 52%,#087ea4 100%);
+      padding:66px 20px 48px;
+    }
+    .hero-inner{
+      max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:end;
+    }
+    .kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:6px 12px;border:1px solid rgba(255,255,255,.24);border-radius:999px;
+      background:rgba(255,255,255,.10);color:#dff6ff;font-size:13px;margin-bottom:14px;
+    }
+    h1{font-size:clamp(30px,4.2vw,50px);line-height:1.12;margin:0 0 14px;letter-spacing:-.02em}
+    .subtitle{font-size:17px;color:rgba(255,255,255,.86);max-width:780px;margin:0}
+    .meta{
+      background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+      border-radius:var(--radius);padding:20px;box-shadow:0 18px 44px rgba(0,0,0,.18)
+    }
+    .meta h2{font-size:17px;margin:0 0 10px;color:#fff}
+    .meta-row{display:flex;justify-content:space-between;gap:16px;padding:8px 0;border-top:1px solid rgba(255,255,255,.16);font-size:14px}
+    .meta-row:first-of-type{border-top:none}
+    .meta-row span:first-child{color:rgba(255,255,255,.68)}
+    .meta-row span:last-child{text-align:right;font-weight:750}
+    main{max-width:1180px;margin:-26px auto 80px;padding:0 20px}
+    section{scroll-margin-top:86px;margin-bottom:24px}
+    .card{
+      background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:28px;
+    }
+    .section-title{display:flex;align-items:center;gap:12px;margin:0 0 18px;font-size:24px;letter-spacing:-.01em}
+    .num{width:34px;height:34px;border-radius:11px;display:inline-grid;place-items:center;background:var(--blueSoft);color:var(--primary);font-weight:850;font-size:15px;flex:none}
+    .lead{font-size:17px;color:#344054;margin-top:0}
+    .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .grid-3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .mini-card{
+      border:1px solid var(--line);border-radius:16px;background:#fff;padding:18px;
+    }
+    .mini-card h3{margin:2px 0 8px;font-size:18px;color:#111827}
+    .mini-card p{margin:6px 0 0;color:#475467}
+    .mini{
+      border:1px solid var(--line);border-radius:16px;background:#fff;padding:18px;
+    }
+    .mini h3{margin:2px 0 8px;font-size:18px;color:#111827}
+    .mini p{margin:6px 0 0;color:#475467}
+    .metric{
+      border:1px solid var(--line);border-radius:18px;background:#fff;padding:18px;
+      min-height:142px;
+    }
+    .metric .label{font-size:13px;color:var(--muted);font-weight:700;margin-bottom:4px}
+    .metric .big{font-size:26px;line-height:1.2;font-weight:900;color:var(--primary);letter-spacing:-.02em}
+    .metric .small{font-size:13px;color:#475467;margin-top:8px}
+    .metric.good{background:linear-gradient(180deg,#ffffff,#f0fdf4)}
+    .metric.warn{background:linear-gradient(180deg,#ffffff,#fffbeb)}
+    .metric.danger{background:linear-gradient(180deg,#ffffff,#fff1f2)}
+    .badge{
+      display:inline-flex;align-items:center;gap:6px;padding:3px 9px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:7px;
+      background:#eef2ff;color:#3730a3;
+    }
+    .badge.green{background:var(--greenSoft);color:var(--green)}
+    .badge.amber{background:var(--amberSoft);color:var(--amber)}
+    .badge.red{background:var(--redSoft);color:var(--red)}
+    .badge.blue{background:var(--blueSoft);color:var(--primary)}
+    .callout{
+      border-radius:16px;padding:16px 18px;margin:18px 0;border:1px solid transparent;
+    }
+    .callout.info{background:#eff6ff;border-color:#bfdbfe}
+    .callout.good{background:#ecfdf3;border-color:#abefc6}
+    .callout.warn{background:#fffbeb;border-color:#fedf89}
+    .callout.danger{background:#fff1f3;border-color:#fecdd3}
+    .callout strong{color:#101828}
+    table{
+      width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#fff;margin:16px 0 8px;font-size:14px;
+    }
+    th,td{padding:12px 14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+    th:last-child,td:last-child{border-right:none}
+    tr:last-child td{border-bottom:none}
+    th{background:#f8fafc;color:#344054;font-weight:850;white-space:nowrap}
+    .cost{font-weight:900;color:var(--primary);white-space:nowrap}
+    .red{color:var(--red);font-weight:850}
+    .green{color:var(--green);font-weight:850}
+    .amber{color:var(--amber);font-weight:850}
+    .muted{color:var(--muted)}
+    .formula{
+      background:#111827;color:#e5e7eb;border-radius:14px;padding:14px 16px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;overflow:auto;font-size:13px;line-height:1.6
+    }
+    ul,ol{padding-left:1.35em}
+    li{margin:5px 0}
+    .source-list li{word-break:break-word}
+    .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .btn{
+      appearance:none;border:0;border-radius:999px;padding:10px 16px;background:var(--primary);color:#fff;font-weight:850;cursor:pointer;box-shadow:0 8px 18px rgba(15,76,129,.2)
+    }
+    .btn.secondary{background:#fff;color:var(--primary);border:1px solid #bae6fd;box-shadow:none}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+    .pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:13px;color:#344054}
+    .calc{
+      border:1px solid #bae6fd;background:#f0f9ff;border-radius:18px;padding:18px;margin-top:14px;
+    }
+    .calc-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+    label{font-size:13px;color:#344054;font-weight:800;display:block;margin-bottom:4px}
+    input{
+      width:100%;border:1px solid #cbd5e1;border-radius:12px;padding:10px 12px;font-size:15px;background:#fff;color:#111827;
+    }
+    .result{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px;
+    }
+    .result .box{
+      background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;
+    }
+    .result .box div:first-child{font-size:13px;color:var(--muted);font-weight:800}
+    .result .box div:last-child{font-size:22px;color:var(--primary);font-weight:900}
+    code{background:#f2f4f7;border:1px solid #e4e7ec;border-radius:6px;padding:1px 5px}
+    pre{
+      white-space:pre-wrap;background:#0f172a;color:#e2e8f0;border-radius:16px;padding:16px;overflow:auto;font-size:13px;line-height:1.65
+    }
+    .footer{text-align:center;color:var(--muted);font-size:13px;margin-top:26px}
+    @media(max-width:920px){
+      .hero-inner,.grid-2,.grid-3,.grid-4,.calc-grid,.result{grid-template-columns:1fr}
+      .nav{align-items:flex-start;flex-direction:column}
+      main{margin-top:-18px}
+      .card{padding:22px}
+      table{display:block;overflow-x:auto}
+    }
+    @media print{
+      body{background:#fff}
+      .topbar,.toolbar,.calc button{display:none!important}
+      .hero{background:#fff;color:#111827;padding:24px 0}
+      .hero-inner{display:block;max-width:none;padding:0 12mm}
+      .subtitle,.kicker{color:#344054;background:none;border:1px solid #ddd}
+      .meta{background:#fff;color:#111827;border:1px solid #ddd;box-shadow:none;margin-top:12px}
+      .meta h2,.meta-row span:first-child,.meta-row span:last-child{color:#111827}
+      main{max-width:none;margin:0;padding:0 12mm 12mm}
+      .card{box-shadow:none;border:1px solid #ddd;break-inside:avoid}
+      section{break-inside:avoid;margin-bottom:12px}
+      a{color:#111827;text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+<header class="topbar">
+  <nav class="nav" aria-label="报告导航">
+    <div class="brand"><span>保</span>进场保险成本报告</div>
+    <div class="navlinks">
+      <a href="#onepage">核心结论</a>
+      <a href="#gl-direct">2亿责任险</a>
+      <a href="#formula">计算公式</a>
+      <a href="#calculator">成本计算器</a>
+      <a href="#supplier">下家派人</a>
+      <a href="#cost-table">成本表</a>
+      <a href="#insurance-types">保险种类</a>
+      <a href="#questions">客户确认</a>
+      <a href="#templates">模板</a>
+      <a href="#sources">来源</a>
+    </div>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="kicker">东京 · IT SES · 项目保险要求 · 成本影响分析</div>
+      <h1>项目进场保险要求与成本</h1>
+      <p class="subtitle">针对客户要求“人员进入项目时需购买相应保险”的情况，整理日本/东京可对应的保险种类、公开费率样本、公司整体成本与单个人员成本估算。</p>
+      <div class="toolbar">
+        <button class="btn" onclick="window.print()">打印 / 另存为 PDF</button>
+        <a class="btn secondary" href="#gl-direct">直接看 2亿责任险成本</a>
+      </div>
+    </div>
+    <aside class="meta">
+      <h2>报告信息</h2>
+      <div class="meta-row"><span>制作日期</span><span>2026-06-08</span></div>
+      <div class="meta-row"><span>适用地区</span><span>日本 / 东京</span></div>
+      <div class="meta-row"><span>适用业务</span><span>SES / IT 人员进项目</span></div>
+      <div class="meta-row"><span>测算口径</span><span>实际进场人员 + 项目摊销</span></div>
+      <div class="meta-row"><span>最终金额</span><span>以保险代理店正式报价为准</span></div>
+    </aside>
+  </div>
+</div>
+
+<main>
+<section id="onepage" class="card">
+  <h2 class="section-title"><span class="num">1</span>核心结论</h2>
+  <p class="lead">如果客户只是要求普通的一般责任险 + 每人 5,000 万日元人身意外险，且项目不使用车辆，则整体成本上升幅度不大；真正可能显著增加成本的是客户是否要求 IT 专业赔偿、E&O 或 Cyber 保险。</p>
+
+  <div class="grid-4">
+    <div class="metric warn"><span class="badge green">成本较可控</span>
+      <div class="label">一般责任险 2亿/事故</div>
+      <div class="big">约 ¥5万〜12万/年</div>
+      <div class="small">一般责任险是固定成本，可以被多个项目、多人摊薄。单人项目大约每月增加 0.8万〜1.7万日元/月；多人项目可摊薄。若需追加被保险人、特殊条款，按 ¥10万〜30万/年 更稳。</div>
+    </div>
+    <div class="metric good"><span class="badge yellow">需要确认</span>
+      <div class="label">每事故 USD 100万额度</div>
+      <div class="small">USD 1,000,000 按汇率约等于 JPY 1.5〜1.6亿。日本保单建议设为 <strong>2亿日元/事故</strong>，避免汇率波动。需代理店确认。</div>
+    </div>
+    <div class="metric"><span class="badge green">成本较可控</span>
+      <div class="label">人身意外 5,000万/人</div>
+      <div class="big">约 ¥6万〜10万/人/年</div>
+      <div class="small">按人数增加的成本。单人项目大约每月增加 0.5万〜0.8万日元/月。若只限业务中/通勤，可以按业务灾害险降低成本。</div>
+    </div>
+    <div class="metric danger"><span class="badge red">成本大幅上升点</span>
+      <div class="label">IT E&O / Cyber</div>
+      <div class="big">约 ¥100万〜200万/年起</div>
+      <div class="small">如果客户把一般责任险理解为开发错误、数据泄露、系统障害等专业责任险，这才是大成本。</div>
+    </div>
+  </div>
+
+  <div class="callout good">
+    <strong>最实用的报价口径：</strong>普通进场、不使用车辆、不含 IT E&O/Cyber 时，单人进场的新增成本通常可按 <strong>¥1万〜2万/人/月</strong> 预留；多人或多个项目共用一般责任险时会更低。若客户要求 Cyber/E&O，必须单独报价，不建议包含到普通 SES 单价里。
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>场景</th>
+        <th>公司新增成本</th>
+        <th>按 1 人项目折算</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>最小普通场景</strong><br>GL 2亿 + 5,000万意外险；无车；无Cyber</td>
+        <td class="cost">¥11万〜22万/年</td>
+        <td class="cost">约 ¥9,000〜18,000/月</td>
+        <td>一般责任险按 ¥5万〜12万/年，人身意外按 ¥6万〜10万/人/年。</td>
+      </tr>
+      <tr>
+        <td><strong>已有1亿一般责任险，只需上调到2亿</strong></td>
+        <td class="cost">额外约 ¥8万〜18万/年</td>
+        <td class="cost">约 ¥6,700〜15,000/月</td>
+        <td>一般责任险上调差额 + 人身意外；实际以代理店批改报价为准。</td>
+      </tr>
+      <tr>
+        <td><strong>下家人员已自带同等保险证明</strong></td>
+        <td class="cost">可能仅 ¥5万〜12万/年</td>
+        <td class="cost">约 ¥4,200〜10,000/月</td>
+        <td>我司仍可能需要公司层面的一般责任险；按人意外险由下家承担或已含在下家报价里。</td>
+      </tr>
+      <tr>
+        <td><strong>客户要求 IT E&O/Cyber</strong></td>
+        <td class="cost">另增约 ¥119万〜183万/年起</td>
+        <td class="cost">约 ¥10万〜15万/月起</td>
+        <td>这是另一类保险，需单独确认和转嫁成本。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="gl-direct" class="card">
+  <h2 class="section-title"><span class="num">2</span>重点：JPY 2亿/事故的一般责任险会增加多少钱？</h2>
+
+  <div class="callout info">
+    如果公司原本没有一般责任险，新增一份满足 <strong>JPY 2亿/事故</strong> 的普通国内一般责任险 / CGL，IT SES 低风险业务的内部预算建议先按 <strong>¥5万〜12万/年</strong>。如果客户要求英文 Certificate of Insurance、Additional Insured、Waiver of Subrogation，预算建议提高到 <strong>¥10万〜30万/年</strong>。
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>问题</th>
+        <th>预估金额</th>
+        <th>为什么这样估</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>新买 2亿/事故一般责任险</strong></td>
+        <td class="cost">普通：¥50,000〜120,000/年<br>保守：¥100,000〜300,000/年</td>
+        <td>三井住友海上公开样本中，软件业、年销售额 1,000万日元、支払い限度額 1亿日元时，月保费为 2,080〜4,830日元，即年约 24,960〜57,960日元。2亿的公开固定报价未找到，实际要按限额、売上高、业务内容核保。</td>
+      </tr>
+      <tr>
+        <td><strong>已有 1亿/事故一般责任险，只提升到 2亿</strong></td>
+        <td class="cost">差额预算：¥20,000〜80,000/年</td>
+        <td>保额提高不一定按倍数增加，但需要保单批改或续保重新报价。若客户要求特殊英文条款，差额可能超过这个范围。</td>
+      </tr>
+      <tr>
+        <td><strong>按项目月成本</strong></td>
+        <td class="cost">普通：¥4,200〜10,000/月<br>保守：¥8,300〜25,000/月</td>
+        <td>这是公司整体保单的月摊销。若同一年多个客户/项目共用这份一般责任险，单项目成本可再摊薄。</td>
+      </tr>
+      <tr>
+        <td><strong>按进场人员分摊</strong></td>
+        <td class="cost">1人：¥4,200〜10,000/人/月<br>3人：约 ¥1,400〜3,300/人/月</td>
+        <td>一般责任险是公司整体成本，不是每个工程师都买一份。真正按人增加的是人身意外险、特別加入等。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <strong>不能把 2亿责任险和 Cyber/E&O 混在一起。</strong>普通 General Liability 主要是第三者身体伤害、财物损坏。系统开发错误、数据泄露、系统停止、客户营业损失通常要看 IT E&O / Cyber / 専門職業賠償責任 的条款，成本不是几万日元级别。
+  </div>
+
+  <h3>USD 100万为什么建议用 JPY 2亿？</h3>
+  <p>客户写的是每事故 USD 1,000,000。2026年6月7日左右，1美元约 160.3日元，所以 USD 100万约等于 JPY 1.603亿。日本保单一般以日元设置限额，为避免汇率波动，建议向客户写成 <strong>JPY 200,000,000 per occurrence</strong>。</p>
+</section>
+
+<section id="formula" class="card">
+  <h2 class="section-title"><span class="num">3</span>正确计算口径：只看项目实际进场人员</h2>
+
+  <div class="formula">项目新增成本 = 公司整体 GL 摊销
+             + 实际进场人数 × 人身意外险
+             + 实际进场人数 × 労災特別加入/下家证明成本
+             + 车辆保险
+             + IT E&O / Cyber
+
+单人月成本 = 项目新增成本 ÷ 项目月份 ÷ 实际进场人数</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>成本项</th>
+        <th>是否按人数增加</th>
+        <th>谁来承担比较合理</th>
+        <th>建议处理</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>一般责任险 GL / CGL</strong></td>
+        <td><span class="green">固定成本，不按人数线性增加</span></td>
+        <td>原则上由我司承担，作为对客户的供应商保险证明。</td>
+        <td>公司年度保单；可按项目或客户摊销。</td>
+      </tr>
+      <tr>
+        <td><strong>5,000万日元人身意外险</strong></td>
+        <td><span class="red">按进场人员增加</span></td>
+        <td>自社人员由我司买；下家人员可要求下家买并提供证明。</td>
+        <td>约 ¥6万〜10万/人/年，按项目月数折算。</td>
+      </tr>
+      <tr>
+        <td><strong>労災 / Workers’ Comp</strong></td>
+        <td>雇员按工资；自由职业者按特別加入</td>
+        <td>谁雇佣/委托该人员，谁提供证明。</td>
+        <td>下家员工让下家出労災证明；个人事业主可要求特別加入。</td>
+      </tr>
+      <tr>
+        <td><strong>车辆责任险</strong></td>
+        <td>按车辆/使用情况</td>
+        <td>使用车辆的一方承担。</td>
+        <td>SES 通常不使用业务车辆，可写“不适用”。</td>
+      </tr>
+      <tr>
+        <td><strong>IT E&O / Cyber</strong></td>
+        <td>公司整体保单，不按单人便宜</td>
+        <td>若客户要求，应由项目或客户成本承担。</td>
+        <td>不要默认包含，必须单独确认。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="calculator" class="card">
+  <h2 class="section-title"><span class="num">4</span>小计算器：改几个数字就能看成本</h2>
+  <p class="lead">把“下家已自带保险”的项目填 0，把“客户要求 Cyber”的项目填入 Cyber 年保费，就能快速估算。</p>
+
+  <div class="calc">
+    <div class="calc-grid">
+      <div>
+        <label for="persons">实际进场人数</label>
+        <input id="persons" type="number" value="1" min="1" step="1" />
+      </div>
+      <div>
+        <label for="months">项目月数</label>
+        <input id="months" type="number" value="12" min="1" step="1" />
+      </div>
+      <div>
+        <label for="share">同年度可摊销项目数</label>
+        <input id="share" type="number" value="1" min="1" step="1" />
+      </div>
+      <div>
+        <label for="gl">GL 2亿/事故 年保费（円）</label>
+        <input id="gl" type="number" value="120000" min="0" step="10000" />
+      </div>
+      <div>
+        <label for="pa">人身意外险/人/年（円）</label>
+        <input id="pa" type="number" value="80000" min="0" step="10000" />
+      </div>
+      <div>
+        <label for="special">特別加入/人/年（円）</label>
+        <input id="special" type="number" value="0" min="0" step="1000" />
+      </div>
+      <div>
+        <label for="cyber">Cyber/E&O 年保费（円）</label>
+        <input id="cyber" type="number" value="0" min="0" step="100000" />
+      </div>
+      <div>
+        <label for="car">车辆保险/年（円）</label>
+        <input id="car" type="number" value="0" min="0" step="10000" />
+      </div>
+      <div>
+        <label>&nbsp;</label>
+        <button class="btn" onclick="calcCost()">重新计算</button>
+      </div>
+    </div>
+    <div class="result">
+      <div class="box"><div>项目总新增成本</div><div id="rTotal">—</div></div>
+      <div class="box"><div>项目月成本</div><div id="rMonthly">—</div></div>
+      <div class="box"><div>单人月成本</div><div id="rPerPerson">—</div></div>
+    </div>
+    <p class="muted">计算公式：公司整体保单按“项目月数/12/可摊销项目数”摊销；按人保险按“人数 × 年保费 × 项目月数/12”计算。</p>
+  </div>
+</section>
+
+<section id="supplier" class="card">
+  <h2 class="section-title"><span class="num">5</span>从下家临时招人时，保险怎么处理？</h2>
+  <p class="lead">进场人员不一定是自社人员，所以成本不应按公司全体人数算，而应按“责任链”处理。</p>
+
+  <div class="grid-3">
+    <div class="mini">
+      <span class="badge blue">第1层</span>
+      <h3>客户要求的是我司供应商保险</h3>
+      <p>客户签约对象通常是我司，所以即使人员来自下家，我司仍可能需要一份公司层面的 GL/CGL 作为供应商保险证明。</p>
+    </div>
+    <div class="mini">
+      <span class="badge amber">第2层</span>
+      <h3>下家需承担同等保险与合规义务</h3>
+      <p>下家合同里应要求同等保险：一般责任险、労災、5,000万意外险、必要时 Cyber/E&O，并要求提交证明。</p>
+    </div>
+    <div class="mini">
+      <span class="badge green">第3层</span>
+      <h3>按实际进场人员算按人成本</h3>
+      <p>只有真正进入该项目的人，才需要人身意外险、特別加入等按人成本。</p>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>人员来源</th>
+        <th>我司新增成本</th>
+        <th>下家/本人应提供</th>
+        <th>建议写入合同</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>我司雇佣员工</strong></td>
+        <td>一般责任险摊销 + 人身意外险。法定労災通常既有。</td>
+        <td>无需下家。</td>
+        <td>我司准备労働保険资料、在留资格确认、人身意外险证明。</td>
+      </tr>
+      <tr>
+        <td><strong>下家公司雇员</strong></td>
+        <td>我司一般责任险仍可能需要；人身意外险如由下家提供，可不重复购买。</td>
+        <td>下家的労災加入证明、5,000万意外险证明、一般责任险GL/CGL证明。</td>
+        <td>下家应保证其派出人员符合客户保险要求，并承担未满足要求导致的损失。</td>
+      </tr>
+      <tr>
+        <td><strong>下家的个人事业主/自由职业者</strong></td>
+        <td>若对方无保险，可能需要把特別加入、人身意外险成本计入采购单价。</td>
+        <td>フリーランス労災特別加入证明、5,000万意外险证明。</td>
+        <td>未提交证明前不得进场；保险费由本人/下家承担或在单价中明示。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <strong>实务建议：</strong>不要口头问“有没有保险”。要让下家提交 <code>保险証券</code>、<code>付保証明書</code>、<code>労災/特別加入证明</code>，并确认保额、保险期间、被保险人范围、是否覆盖客户现场作业。最好让下家保险证明覆盖“派出人员在客户项目中的业务行为”，否则出了事故仍可能回到我司。
+  </div>
+</section>
+
+<section id="cost-table" class="card">
+  <h2 class="section-title"><span class="num">6</span>成本估算总表：按“项目实际需要”看</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>项目</th>
+        <th>什么情况下需要</th>
+        <th>成本估算</th>
+        <th>计费对象</th>
+        <th>是否要转嫁给项目</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>一般责任险 General Liability / CGL</strong><br>JPY 2亿/事故</td>
+        <td>客户要求 USD 100万/事故一般责任险时</td>
+        <td class="cost">¥5万〜12万/年<br>保守 ¥10万〜30万/年</td>
+        <td>公司整体保单</td>
+        <td>建议摊入项目管理费/保险成本。</td>
+      </tr>
+      <tr>
+        <td><strong>1亿 → 2亿 一般责任险上调</strong></td>
+        <td>公司已有 1亿/事故，只是不足客户要求</td>
+        <td class="cost">差额约 ¥2万〜8万/年</td>
+        <td>公司整体保单</td>
+        <td>批改/续保差额，可按客户/项目摊销。</td>
+      </tr>
+      <tr>
+        <td><strong>人身意外险</strong><br>死亡/后遗障害 5,000万/人</td>
+        <td>客户明确要求每名进场人员 5,000万</td>
+        <td class="cost">¥6万〜10万/人/年</td>
+        <td>按实际进场人员</td>
+        <td>最可能成为新增单人成本。</td>
+      </tr>
+      <tr>
+        <td><strong>政府労災保険</strong></td>
+        <td>进场人员为雇员</td>
+        <td class="cost">工资总额 × 労災率</td>
+        <td>法定既有成本</td>
+        <td>通常不作为新增项目成本。</td>
+      </tr>
+      <tr>
+        <td><strong>フリーランス労災特別加入</strong></td>
+        <td>进场人员是个人事业主/自由职业者，客户要求 Workers’ Comp 类证明</td>
+        <td class="cost">约 ¥3,831〜27,375/人/年<br>另有团体会费可能</td>
+        <td>按实际进场人员</td>
+        <td>由本人/下家承担或计入采购单价。</td>
+      </tr>
+      <tr>
+        <td><strong>车辆责任险</strong></td>
+        <td>项目使用公司车、租车、私车执行任务</td>
+        <td class="cost">无车：¥0<br>有车：另行报价</td>
+        <td>按车辆/使用情况</td>
+        <td>SES 通常声明不适用。</td>
+      </tr>
+      <tr>
+        <td><strong>IT E&O / Cyber</strong></td>
+        <td>客户要求系统开发错误、数据泄露、网络事故、纯经济损失</td>
+        <td class="cost">IT服务业公开样本：¥119万/年起</td>
+        <td>公司整体高额保单</td>
+        <td>必须先确认客户要求，单独报价。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="insurance-types" class="card">
+  <h2 class="section-title"><span class="num">7</span>客户要求的日本保险拆解</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>客户英文/中文要求</th>
+        <th>日本对应名称</th>
+        <th>可覆盖什么</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>General Liability</strong><br>一般责任险<br>每事故 USD 1,000,000</td>
+        <td>企業総合賠償責任保険、和文CGL、施設賠償責任保険、事業活動包括保険</td>
+        <td>业务执行中造成第三者身体伤害、财物损坏的法律赔偿。</td>
+        <td>普通 GL 通常不等于 Cyber/E&O；也未必自动覆盖下家行为，需确认 <code>下請負人</code>、<code>業務委託者</code> 的处理。</td>
+      </tr>
+      <tr>
+        <td><strong>Workers’ Compensation</strong><br>员工工伤保险</td>
+        <td>労災保険；自由职业者可用「労災保険への特別加入」</td>
+        <td>工作中/通勤中的伤病、后遗障害、死亡等。</td>
+        <td>下家雇员由下家提供证明；个人事业主不自动被我司労災覆盖。</td>
+      </tr>
+      <tr>
+        <td><strong>Personal Accident</strong><br>每人 JPY 50,000,000</td>
+        <td>傷害保険、普通傷害保険、団体傷害保険、業務災害総合保険、労災上乗せ</td>
+        <td>意外死亡/后遗障害 5,000万日元。</td>
+        <td>24小时保障、业务中限定、交通事故限定成本差别很大。</td>
+      </tr>
+      <tr>
+        <td><strong>Vehicle Liability</strong><br>车辆责任险</td>
+        <td>自賠責保険 + 任意自動車保険</td>
+        <td>视项目而定，业务车辆使用造成的人身/财物赔偿。</td>
+        <td>无业务车辆时应明确写“不适用”，若工程师不驾驶车辆进入项目，可说明不涉及业务车辆使用。</td>
+      </tr>
+      <tr>
+        <td><strong>合法工作身份 / 合规</strong></td>
+        <td>在留资格确认、雇佣/委托合同、労働保険；供应商合规资料</td>
+        <td>证明人员可合法工作、合同关系和保险关系清楚。</td>
+        <td>这不是保险费，但会产生资料整理和审查成本。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="types" class="card">
+  <h2 class="section-title"><span class="num">7.1</span>日本可对应的保险种类</h2>
+  <div class="grid-2">
+    <div class="mini-card">
+      <span class="badge blue">公司整体</span>
+      <h3>一般责任险 / 事业赔偿险</h3>
+      <p>用于覆盖员工在客户现场或业务执行过程中造成第三者人身伤害、财物损坏的赔偿责任。日本常见名称包括：施設賠償責任保険、事業活動包括保険、ビジネスプロテクター、事業賠償・費用総合保険。</p>
+    </div>
+    <div class="mini-card">
+      <span class="badge blue">公司整体</span>
+      <h3>IT 专业赔偿 / E&O / Cyber</h3>
+      <p>用于覆盖系统故障、开发错误、数据泄露、网络事故、客户业务损失等。普通 General Liability 未必覆盖，需要客户明确是否要求。</p>
+    </div>
+    <div class="mini-card">
+      <span class="badge green">法定</span>
+      <h3>政府労災保険</h3>
+      <p>日本劳动者工伤保险，原则上雇佣员工即需加入。覆盖工作中、通勤中的伤病、后遗障害、死亡等。</p>
+    </div>
+    <div class="mini-card">
+      <span class="badge yellow">按人/团体</span>
+      <h3>人身意外险 / 労災上乗せ</h3>
+      <p>满足“每名人员 5,000万日元”的要求。可用普通伤害险/团体伤害险，也可通过业务灾害综合保险实现工作中事故的上乗せ补偿。</p>
+    </div>
+  </div>
+</section>
+
+<section id="gl" class="card">
+  <h2 class="section-title"><span class="num">7.2</span>一般责任险 / General Liability</h2>
+  <p>客户要求每事故 USD 1,000,000。日本保单一般以日元设置限额。考虑汇率波动，建议不要只设 1亿日元，而应至少设置 <strong>2亿日元/事故</strong>。</p>
+
+  <div class="callout warn">
+    <strong>注意：</strong>普通 General Liability 主要覆盖第三者人身伤害、财物损坏；并不一定覆盖软件开发错误、系统故障、数据泄露、客户营业损失等 IT 专业风险。
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>日本保险名称</th>
+        <th>主要保障</th>
+        <th>适合程度</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>施設賠償責任保険</td>
+        <td>公司设施/业务管理中导致第三者受伤或财物损害</td>
+        <td>基础可用，但需确认是否覆盖客户现场业务遂行。</td>
+      </tr>
+      <tr>
+        <td>事業活動包括保険</td>
+        <td>将多种事业活动赔偿责任打包</td>
+        <td>更适合公司整体投保。</td>
+      </tr>
+      <tr>
+        <td>ビジネスプロテクター</td>
+        <td>三井住友海上法人赔偿综合产品</td>
+        <td>有软件业公开保费样本，可作为成本参考。</td>
+      </tr>
+      <tr>
+        <td>事業賠償・費用総合保険</td>
+        <td>AIG 等公司的企业赔偿产品，可附加多种风险</td>
+        <td>若需要英文证明或派遣相关条款，可咨询。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="workers" class="card">
+  <h2 class="section-title"><span class="num">7.3</span>労災保険 / 雇用保险</h2>
+  <p>日本政府労災保険。对于已经正规雇佣的员工，这是公司本来就应承担的法定成本，通常不是因为客户要求才新增。</p>
+
+  <div class="formula">労災保険料 = 年间工资总额 × 労災保険率
+IT/SES 低风险办公类粗估：工资总额 × 0.25%〜0.3%</div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>项目</th>
+        <th>费率/成本</th>
+        <th>例：年工资 600万日元</th>
+        <th>公司成本性质</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>労災保険</td>
+        <td>约 0.25%〜0.3%</td>
+        <td class="cost">约 15,000〜18,000日元/年</td>
+        <td>法定；通常既有。</td>
+      </tr>
+      <tr>
+        <td>雇用保险公司负担</td>
+        <td>2026年度一般事业：8.5/1000 = 0.85%</td>
+        <td class="cost">约 51,000日元/年</td>
+        <td>法定；正规雇佣本来已有。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="muted">注：客户通常只要求工伤保险保障，也就是日文里的「労災保険の適用 / 労働者災害補償保険による補償」。实务上可能需要提交労働保険相关证明、保险加入证明或社労士/公司出具的说明。</p>
+</section>
+
+<section id="accident" class="card">
+  <h2 class="section-title"><span class="num">7.4</span>人身意外险 / Personal Accident</h2>
+  <p>客户要求每名员工 JPY 5000万。日本可用普通伤害险、团体伤害险、团体综合生活补偿保险，或业务灾害综合保险来满足，但需要确认保障范围。</p>
+
+  <div class="grid-2">
+    <div class="mini-card">
+      <span class="badge yellow">方案 A</span>
+      <h3>每人普通/团体伤害险</h3>
+      <p>更贴近 Personal Accident Insurance。如果要求 24小时保障，成本通常较高。粗估 5000万日元死亡/后遗障害保额约 <strong>6万〜10万日元/年/人</strong>。</p>
+    </div>
+    <div class="mini-card">
+      <span class="badge blue">方案 B</span>
+      <h3>业务灾害综合保险</h3>
+      <p>若客户接受只限业务中/通勤中，可用公司整体业务灾害险或労災上乗せ方案，有时比逐人 24小时伤害险更合理。</p>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>公开样本</th>
+        <th>保额</th>
+        <th>保费样本</th>
+        <th>推算到 5,000万日元</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>三井住友海上 GK ケガの保険 标准计划</td>
+        <td>死亡/后遗障害 1,000万日元</td>
+        <td>20,620日元/年</td>
+        <td>约 10万日元/年/人附近，实际不完全线性。</td>
+      </tr>
+      <tr>
+        <td>三井住友海上 GK ケガの保険 あんしんプラン</td>
+        <td>死亡/后遗障害 2,000万日元</td>
+        <td>37,120日元/年</td>
+        <td>约 9万日元/年/人附近，实际看附加保障。</td>
+      </tr>
+      <tr>
+        <td>交通事故限定方案</td>
+        <td>死亡/后遗障害 1,000万日元</td>
+        <td>7,720日元/年</td>
+        <td>若客户接受交通事故限定，成本可能低很多；但通常不满足广义 Personal Accident。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="vehicle" class="card">
+  <h2 class="section-title"><span class="num">7.5</span>车辆责任险</h2>
+  <p>SES/IT 项目一般不需要车辆。如果工程师只是乘坐公共交通去客户现场，可向客户说明本项目不涉及业务车辆使用，此项新增成本为 0。</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>保险</th>
+        <th>日本要求/实务</th>
+        <th>成本参考</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>自賠責保険</td>
+        <td>法定强制；只保对人，不保对物</td>
+        <td class="cost">普通乘用车 24个月约 17,650日元；2026年11月后拟约 18,560日元</td>
+        <td>保障上限有限：死亡最高 3,000万日元、伤害最高 120万日元。</td>
+      </tr>
+      <tr>
+        <td>任意自動車保険</td>
+        <td>实务上建议法人业务使用，对人/对物无限额</td>
+        <td class="cost">公开样本约 57,220〜61,420日元/年/车；粗估 6万〜12万日元/年/车</td>
+        <td>视车辆、驾驶者年龄、等級、走行距离、车险内容变化。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="risk" class="card">
+  <h2 class="section-title"><span class="num">7.6</span>关键风险与成本上升点</h2>
+  <ol>
+    <li><strong>General Liability 与 IT E&O/Cyber 混淆：</strong>如果客户实际要求覆盖软件开发错误、数据泄露、系统故障，一般责任险可能不够，成本会从几万/十几万日元级别跳到百万日元级别。</li>
+    <li><strong>USD 保额与 JPY 保额换算：</strong>USD 100万按汇率约 1.5〜1.6亿日元，建议设置 JPY 2亿/事故并确认客户是否接受。</li>
+    <li><strong>人身意外险范围不明：</strong>24小时保障、仅工作中、仅通勤/交通事故，成本差距很大。</li>
+    <li><strong>保险对象范围：</strong>只限进入该客户项目的人员，还是全公司员工，直接影响总成本。</li>
+    <li><strong>英文证明要求：</strong>如果客户要求英文 Certificate of Insurance，需提前确认保险公司/代理店能否出具。</li>
+  </ol>
+</section>
+
+<section id="questions" class="card">
+  <h2 class="section-title"><span class="num">8</span>建议向客户确认的问题</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>问题</th>
+        <th>影响的成本</th>
+        <th>备注</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>General Liability 是否只要求对人/对物？<br>是否包含 IT E&O、Professional Liability、Cyber Liability？</td>
+        <td class="cost">几万〜十几万 vs 百万级</td>
+        <td>这是成本是否从几万日元变成百万日元级别的关键。</td>
+      </tr>
+      <tr>
+        <td>USD 1,000,000 是否接受 日元保单 每事故 JPY 200,000,000？</td>
+        <td>影响保额设置</td>
+        <td>日本保单通常以日元计价，需要避免汇率波动导致不满足。</td>
+      </tr>
+      <tr>
+        <td>是否需要英文 Certificate of Insurance？</td>
+        <td>影响代理店、保险公司、条款措辞</td>
+        <td>需要提前要求保险公司或代理店出具，部分条款需英文列明。</td>
+      </tr>
+      <tr>
+        <td>是否需要 Additional Insured？</td>
+        <td>可能导致普通保单不够</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>5,000万人身意外险是 24小时还是业务中限定？</td>
+        <td class="cost">按人数保费差别大</td>
+        <td>24小时伤害险成本显著高于业务中限定方案。</td>
+      </tr>
+      <tr>
+        <td>保险对象是“实际进场人员”还是“供应商全体人员”？</td>
+        <td>决定是否按全员买</td>
+        <td>决定按人投保还是公司整体投保，影响总成本。</td>
+      </tr>
+      <tr>
+        <td>下家/合作方人员是否可由其所属公司提供保险证明？</td>
+        <td>决定是否由我司重复投保</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>项目是否涉及驾驶公司车、租车或私家车？</td>
+        <td>无车则 ¥0</td>
+        <td>若无车辆使用，车辆责任险可声明不适用。</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="templates" class="card">
+  <h2 class="section-title"><span class="num">9</span>结论和邮件模板</h2>
+
+  <h3>9.1 结论</h3>
+  <pre>这次不能按公司全体人员算，要按“实际进场人员”算。一般责任险是公司整体保单，不是每个人一份；真正按人增加的是5000万日元的人身意外险。
+
+客户要求USD100万/事故，按现在汇率约1.6亿日元，为保险起见建议报价JPY 2亿/事故。普通日本国内一般责任险GL/CGL，内部预算大概5万〜12万日元/年；如果需要英文证明、追加被保险人、特殊条款，按10万〜30万日元/年预留。若我们已经有1亿保额，只上调到2亿，差额先按2万〜8万日元/年预留，最终要保险代理店报价。
+
+单人项目普通场景：一般责任险GL摊销 + 5000万意外险，大概9,000〜18,000日元/人/月。若人员来自下家，建议要求下家提供同等保险证明；下家已自带保险时，我们只承担公司层面的GL摊销。Cyber/E&O不应默认包含，如果客户要求系统开发错误、数据泄露等，需要单独报价，可能是100万日元/年以上。</pre>
+
+  <h3>9.2 发给客户的确认邮件（日文）</h3>
+  <pre>件名：プロジェクト参画時の保険要件に関する確認
+
+お世話になっております。
+プロジェクト参画時の保険要件について、正式な見積取得のため下記を確認させてください。
+
+1. General Liability は対人・対物賠償のみを対象とする理解でよろしいでしょうか。
+   Professional Liability / E&O / Cyber Liability は別途必要でしょうか。
+
+2. USD 1,000,000 per occurrence の要件について、
+   日本国内保険の JPY 200,000,000 per occurrence で充足可能でしょうか。
+
+3. 英文付保証明書（Certificate of Insurance）は必要でしょうか。
+   また、Additional Insured、Waiver of Subrogation 等の記載は必要でしょうか。
+
+4. Personal Accident の JPY 50,000,000 は、24時間補償が必要でしょうか。
+   それとも業務中・通勤中のみの補償でよろしいでしょうか。
+
+5. 保険対象者は本プロジェクトに実際に参画する要員のみでよろしいでしょうか。
+   協力会社要員については、協力会社の同等保険証明で代替可能でしょうか。
+
+6. 本プロジェクトにおいて業務用車両の使用は想定しておりません。
+   Vehicle Liability は該当なしとの理解でよろしいでしょうか。
+
+以上、よろしくお願いいたします。</pre>
+
+  <h3>9.3 给保险代理店的询价模板（日文）</h3>
+  <pre>件名：IT SES事業に係るCGL・傷害保険のお見積り依頼
+
+お世話になっております。
+弊社は東京都内のIT SES事業者です。顧客より、プロジェクト参画時の保険加入確認を求められております。
+下記条件でお見積りをお願いいたします。
+
+【事業内容】
+IT SES、システム開発支援、顧客先常駐業務
+プロジェクト要員は案件ごとに変動し、協力会社要員を含む場合があります。
+社有車・業務用車両の使用は原則ありません。
+
+【見積希望 1：General Liability / CGL】
+・企業総合賠償責任保険、施設賠償責任保険、事業活動包括保険等
+・対人・対物賠償
+・支払限度額：1事故 JPY 200,000,000 以上
+・顧客先での業務遂行中の事故を対象に含めたい
+・協力会社要員／下請負人の行為に起因する事故の取扱いを確認したい
+・英文付保証明書の発行可否
+・Additional Insured 等の記載可否
+
+【見積希望 2：Personal Accident】
+・死亡・後遺障害：1名あたり JPY 50,000,000 以上
+・対象：プロジェクトに実際に参画する要員
+・24時間補償と業務中・通勤中限定の比較見積り希望
+・協力会社要員を対象に含める場合の可否
+
+【任意確認】
+・IT E&O / Cyber Liability が必要になった場合の概算
+・フリーランス／個人事業主の労災特別加入に関する案内可否
+
+よろしくお願いいたします。</pre>
+</section>
+
+<section id="risk" class="card">
+  <h2 class="section-title"><span class="num">10</span>风险提示</h2>
+  <ol>
+    <li><strong>不要说“一般责任险GL 已覆盖系统开发错误”。</strong>普通 CGL/施設賠償主要是对人对物；开发错误、信息泄露、系统停止要看 IT E&O/Cyber。</li>
+    <li><strong>不要说“下家的人由下家管，所以我司不用买保险”。</strong>客户合同对象通常是我司，我司层面的供应商保险可能仍然必要。</li>
+    <li><strong>不要按公司全体人数报价。</strong>除非客户明确要求全公司覆盖，否则应按实际进场人员测算按人成本。</li>
+    <li><strong>不要默认车辆险适用。</strong>普通 SES 无业务用车时，应写“不使用业务车辆，因此不适用”。</li>
+    <li><strong>不要把“保险费估算”当正式报价。</strong>日本法人保险受营业额、保额、业务内容、事故记录、特约影响很大，必须由代理店出正式报价。</li>
+  </ol>
+</section>
+
+<section id="sources" class="card">
+  <h2 class="section-title"><span class="num">11</span>主要依据与参考来源</h2>
+  <p class="muted">以下来源用于建立成本区间和判断逻辑。正式投保应以保险公司/代理店的见积书、重要事项说明书和保单条款为准。</p>
+  <ul class="source-list">
+    <li><strong>三井住友海上「ビジネスプロテクター 保険料例」：</strong>软件业、年销售额1,000万日元、支払限度額1亿日元、保険期間1年、月额2,080〜4,830日元。<br><a href="https://www.ms-ins.com/business/indemnity/biz-protector/example.html">https://www.ms-ins.com/business/indemnity/biz-protector/example.html</a></li>
+    <li><strong>东京海上日动「施設賠償責任保険」：</strong>设施管理、业务遂行导致第三者受伤或财物损坏时的赔偿；保费由工作内容、面积/入场者数/売上高、支払限度額等决定。<br><a href="https://www.tokiomarine-nichido.co.jp/hojin/baiseki/shisetsu/">https://www.tokiomarine-nichido.co.jp/hojin/baiseki/shisetsu/</a></li>
+    <li><strong>損保ジャパン「企業総合賠償責任保険（和文CGL）」：</strong>国内事业活动相关第三者赔偿风险的综合补偿，核保会确认事业内容、事业所明细、过去事故等。<br><a href="https://www.sompo-japan.co.jp/hinsurance/risk/liability/scorpo/">https://www.sompo-japan.co.jp/hinsurance/risk/liability/scorpo/</a></li>
+    <li><strong>Wise / ExchangeRates USD-JPY 汇率：</strong>2026-06-07 左右 1 USD 约 160.3 JPY；USD 1,000,000 约等于 JPY 1.603亿。<br><a href="https://wise.com/zh-cn/currency-converter/usd-to-jpy-rate/history">https://wise.com/zh-cn/currency-converter/usd-to-jpy-rate/history</a></li>
+    <li><strong>厚生労働省「労働保険の適用・徴収」：</strong>劳动保险包含労災保険和雇用保険；雇佣一名劳动者原则上需要加入；保费按賃金総額×保険料率计算。<br><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/hoken/index.html">https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/hoken/index.html</a></li>
+    <li><strong>厚生労働省「令和8年度雇用保険料率」：</strong>一般事业的事业主负担为 8.5/1000。<br><a href="https://www.mhlw.go.jp/content/001692566.pdf">https://www.mhlw.go.jp/content/001692566.pdf</a></li>
+    <li><strong>厚生労働省 / 労保連 フリーランス労災特別加入：</strong>2024年11月起，企业委托的自由职业者可加入特別加入；特定フリーランス事业保险料率为 3/1000，给付基础日额10,000日元时年保费10,950日元，25,000日元时27,375日元。<br><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/kanyu_r3.4.1_00010.html">https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/rousai/kanyu_r3.4.1_00010.html</a><br><a href="https://rouhoren.or.jp/freelance-rousai/freelance-rousai/specialenrollment.html">https://rouhoren.or.jp/freelance-rousai/freelance-rousai/specialenrollment.html</a></li>
+    <li><strong>三井住友海上「GK ケガの保険 保険料例」：</strong>死亡/后遗障害1,000万日元标准计划一时払20,620日元；2,000万日元あんしんプラン一时払37,120日元。<br><a href="https://www.ms-ins.com/personal/kega/gk/example.html">https://www.ms-ins.com/personal/kega/gk/example.html</a></li>
+    <li><strong>东京海上日动「従業員の労災の保険」：</strong>労働災害総合保険、業務災害総合保険可作为政府労災的上乗せ补偿和赔偿责任风险补偿。<br><a href="https://www.tokiomarine-nichido.co.jp/hojin/rosai/">https://www.tokiomarine-nichido.co.jp/hojin/rosai/</a></li>
+    <li><strong>損保ジャパン「サイバー保険 保険料例」：</strong>ITサービス業（アプリ開発）、売上高5億円、ITサービス業務補償オプション付き，賠償1億/費用3,000万プラン保费1,190,000日元，賠償5億/費用1億プラン1,828,000日元。<br><a href="https://www.sompo-japan-cyber.jp/fee/">https://www.sompo-japan-cyber.jp/fee/</a></li>
+    <li><strong>損害保険料率算出機構「自賠責保険基準料率表」：</strong>车辆使用时参考自賠責基准费率，但 SES 无业务用车时通常可声明不适用。<br><a href="https://www.giroj.or.jp/publication/cali_table.html">https://www.giroj.or.jp/publication/cali_table.html</a></li>
+  </ul>
+  <div class="callout warn">
+    <strong>注意：</strong>本报告用于经营判断和报价前准备，不构成保险建议、法律意见或正式报价。正式成本必须以保险代理店/保险公司核保结果为准。
+  </div>
+</section>
+
+<div class="footer">东京 SES 项目进场保险成本影响报告 · 2026-06-08</div>
+</main>
+
+<script>
+function yen(n){
+  return '¥' + Math.round(n).toLocaleString('ja-JP');
+}
+function num(id){
+  const v = parseFloat(document.getElementById(id).value);
+  return isNaN(v) ? 0 : v;
+}
+function calcCost(){
+  const persons = Math.max(1, num('persons'));
+  const months = Math.max(1, num('months'));
+  const share = Math.max(1, num('share'));
+  const gl = num('gl');
+  const pa = num('pa');
+  const special = num('special');
+  const cyber = num('cyber');
+  const car = num('car');
+  const period = months / 12;
+  const companyCost = (gl + cyber + car) * period / share;
+  const peopleCost = persons * (pa + special) * period;
+  const total = companyCost + peopleCost;
+  const monthly = total / months;
+  const perPersonMonthly = total / months / persons;
+  document.getElementById('rTotal').textContent = yen(total);
+  document.getElementById('rMonthly').textContent = yen(monthly);
+  document.getElementById('rPerPerson').textContent = yen(perPersonMonthly);
+}
+document.querySelectorAll('input').forEach(el => el.addEventListener('input', calcCost));
+calcCost();
+</script>
+</body>
+</html>
