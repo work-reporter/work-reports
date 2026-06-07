@@ -204,6 +204,7 @@
     <div class="navlinks">
       <a href="#onepage">核心结论</a>
       <a href="#gl-direct">2亿责任险</a>
+      <a href="#datacenter">数据中心维护</a>
       <a href="#formula">计算公式</a>
       <a href="#calculator">成本计算器</a>
       <a href="#supplier">下家派人</a>
@@ -221,7 +222,7 @@
     <div>
       <div class="kicker">东京 · IT SES · 项目保险要求 · 成本影响分析</div>
       <h1>项目进场保险要求与成本</h1>
-      <p class="subtitle">针对客户要求“人员进入项目时需购买相应保险”的情况，整理日本/东京可对应的保险种类、公开费率样本、公司整体成本与单个人员成本估算。</p>
+      <p class="subtitle">针对客户要求“人员进入项目时需购买相应保险”的情况，整理日本/东京可对应的保险种类、公开费率样本、公司整体成本、单个人员成本，以及数据中心维护场景下的客户硬件损坏风险。</p>
       <div class="toolbar">
         <button class="btn" onclick="window.print()">打印 / 另存为 PDF</button>
         <a class="btn secondary" href="#gl-direct">直接看 2亿责任险成本</a>
@@ -231,7 +232,7 @@
       <h2>报告信息</h2>
       <div class="meta-row"><span>制作日期</span><span>2026-06-08</span></div>
       <div class="meta-row"><span>适用地区</span><span>日本 / 东京</span></div>
-      <div class="meta-row"><span>适用业务</span><span>SES / IT 人员进项目</span></div>
+      <div class="meta-row"><span>适用业务</span><span>SES / IT 人员 / 数据中心维护</span></div>
       <div class="meta-row"><span>测算口径</span><span>实际进场人员 + 项目摊销</span></div>
       <div class="meta-row"><span>最终金额</span><span>以保险代理店正式报价为准</span></div>
     </aside>
@@ -241,13 +242,13 @@
 <main>
 <section id="onepage" class="card">
   <h2 class="section-title"><span class="num">1</span>核心结论</h2>
-  <p class="lead">如果客户只是要求普通的一般责任险 + 每人 5,000 万日元人身意外险，且项目不使用车辆，则整体成本上升幅度不大；真正可能显著增加成本的是客户是否要求 IT 专业赔偿、E&O 或 Cyber 保险。</p>
+  <p class="lead">如果客户只是要求普通的一般责任险 + 每人 5,000 万日元人身意外险，且项目不使用车辆，则整体成本上升幅度不大；但本次若属于数据中心维护，可能接触服务器、GPU、存储、网络设备、PDU/UPS 等客户硬件，需要额外确认“作业对象物/管理财物/受托物损坏”是否被覆盖。真正可能显著增加成本的是客户是否要求 IT 专业赔偿、E&O、Cyber，或明确要求覆盖高价值硬件损坏。</p>
 
   <div class="grid-4">
     <div class="metric warn"><span class="badge green">成本较可控</span>
       <div class="label">一般责任险 2亿/事故</div>
       <div class="big">约 ¥5万〜12万/年</div>
-      <div class="small">一般责任险是固定成本，可以被多个项目、多人摊薄。单人项目大约每月增加 0.8万〜1.7万日元/月；多人项目可摊薄。若需追加被保险人、特殊条款，按 ¥10万〜30万/年 更稳。</div>
+      <div class="small">一般责任险是固定成本，可以被多个项目、多人摊薄。该金额偏软件/办公类口径；若为数据中心维护并接触客户硬件，按 ¥10万〜30万/年 或另行报价更稳。</div>
     </div>
     <div class="metric good"><span class="badge yellow">需要确认</span>
       <div class="label">一般责任险每事故 USD 100万额度</div>
@@ -263,6 +264,10 @@
       <div class="big">约 ¥100万〜200万/年起</div>
       <div class="small">如果客户把一般责任险理解为开发错误、数据泄露、系统障害等专业责任险，这才是大成本。</div>
     </div>
+  </div>
+
+  <div class="callout warn">
+    <strong>本次数据中心维护特别注意：</strong>如果作业内容包括服务器/GPU/存储/网络设备的安装、交换、插拔线、上架下架、电源操作、PDU/UPS 操作等，普通 General Liability 未必自动覆盖“正在操作或管理中的客户设备损坏”。需要向保险代理店确认 <strong>受託物損壊、管理財物損壊、作業対象物損壊、使用不能損害、下請負人起因事故</strong> 是否包含在内。
   </div>
 
   <div class="callout good">
@@ -284,6 +289,12 @@
         <td class="cost">¥11万〜22万/年</td>
         <td class="cost">约 ¥9,000〜18,000/月</td>
         <td>一般责任险按 ¥5万〜12万/年，人身意外按 ¥6万〜10万/人/年。</td>
+      </tr>
+      <tr>
+        <td><strong>数据中心维护场景</strong><br>接触服务器/GPU/PDU/UPS等客户硬件</td>
+        <td class="cost">GL保守 ¥10万〜30万/年起<br>硬件损坏特约另行报价</td>
+        <td class="cost">约 ¥8,300〜25,000/月起<br>按项目摊销</td>
+        <td>需确认受託物、管理財物、作業対象物損壊；高价GPU/服务器可能导致免赔额或子限额。</td>
       </tr>
       <tr>
         <td><strong>已有1亿一般责任险，只需上调到2亿</strong></td>
@@ -311,7 +322,7 @@
   <h2 class="section-title"><span class="num">2</span>重点：JPY 2亿/事故的一般责任险会增加多少钱？</h2>
 
   <div class="callout info">
-    如果公司原本没有一般责任险，新增一份满足 <strong>JPY 2亿/事故</strong> 的普通国内一般责任险 / CGL，IT SES 低风险业务的内部预算建议先按 <strong>¥5万〜12万/年</strong>。如果客户要求英文 Certificate of Insurance、Additional Insured、Waiver of Subrogation，预算建议提高到 <strong>¥10万〜30万/年</strong>。
+    如果公司原本没有一般责任险，新增一份满足 <strong>JPY 2亿/事故</strong> 的普通国内一般责任险 / CGL，IT SES 低风险业务的内部预算建议先按 <strong>¥5万〜12万/年</strong>。如果客户要求英文 Certificate of Insurance、Additional Insured、Waiver of Subrogation，或本次为数据中心维护并接触客户服务器/GPU等硬件，预算建议提高到 <strong>¥10万〜30万/年</strong>；若要明确覆盖正在作业中的客户设备损坏，需要代理店单独报价。
   </div>
 
   <table>
@@ -354,6 +365,72 @@
   <p>客户写的是每事故 USD 1,000,000。2026年6月7日左右，1美元约 160.3日元，所以 USD 100万约等于 JPY 1.603亿。日本保单一般以日元设置限额，为避免汇率波动，建议向客户写成每事故 <strong>JPY 200,000,000</strong>。</p>
 </section>
 
+
+<section id="datacenter" class="card">
+  <h2 class="section-title"><span class="num">2.1</span>数据中心维护：客户硬件损坏风险</h2>
+  <p class="lead">本次如果不是系统开发，而是数据中心维护，风险会从“软件/办公类”变成“客户现场作业 + 高价值硬件接触”。工程师或下家人员可能接触服务器、GPU、存储、交换机、路由器、线缆、机柜、PDU、UPS 等客户设备，因此需要确认普通 GL/CGL 是否覆盖正在操作、管理、保管或作业中的客户财物。</p>
+
+  <div class="grid-2">
+    <div class="mini-card">
+      <span class="badge red">重点风险</span>
+      <h3>操作不当导致硬件损坏</h3>
+      <p>例如搬运/上架时摔坏 GPU，插拔错误导致主板或电源损坏，误操作 PDU/UPS 导致突然断电，误拔线导致服务器或网络设备异常。此类风险可能被视为“客户财物损坏”，但普通一般责任险未必自动覆盖。</p>
+    </div>
+    <div class="mini-card">
+      <span class="badge amber">必须确认</span>
+      <h3>作业对象物与管理财物</h3>
+      <p>需要让代理店确认是否包含 <strong>受託物損壊</strong>、<strong>管理財物損壊</strong>、<strong>作業対象物損壊</strong>、<strong>使用不能損害</strong>，以及 <strong>下請負人/協力会社要員</strong> 作业导致事故的处理。</p>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>事故例</th>
+        <th>普通 GL 是否稳妥</th>
+        <th>应确认的日文关键词</th>
+        <th>成本影响</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>上架、搬运、安装时摔坏 GPU、服务器、存储设备</td>
+        <td><span class="amber">不一定</span></td>
+        <td>受託物損壊、管理財物損壊、作業対象物損壊</td>
+        <td>可能需要追加特约、设置免赔额或子限额。</td>
+      </tr>
+      <tr>
+        <td>插拔错误、误配线、误操作导致主板、电源、网卡、交换机损坏</td>
+        <td><span class="amber">不一定</span></td>
+        <td>作業対象物の損壊、請負業務遂行リスク</td>
+        <td>比软件开发类风险更高，应按数据中心维护重新报价。</td>
+      </tr>
+      <tr>
+        <td>误断电、误操作 PDU/UPS，导致服务器硬件故障</td>
+        <td><span class="amber">需条款确认</span></td>
+        <td>電気設備作業、業務遂行中の対物事故、管理財物損壊</td>
+        <td>高价服务器/GPU可能导致保费上升或保额限制。</td>
+      </tr>
+      <tr>
+        <td>误拔线导致系统停止，但硬件没有物理损坏</td>
+        <td><span class="red">普通 GL 较弱</span></td>
+        <td>使用不能損害、純粋経済損失、業務中断損害</td>
+        <td>可能需要 IT E&O / Cyber / 专业赔偿类保险。</td>
+      </tr>
+      <tr>
+        <td>数据丢失、客户业务中断、营业损失索赔</td>
+        <td><span class="red">通常不是普通 GL 核心范围</span></td>
+        <td>IT E&O、Cyber Liability、専門職業賠償責任</td>
+        <td>成本可能进入百万日元/年级别，需单独确认。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout warn">
+    <strong>成本口径调整：</strong>原先 <strong>¥5万〜12万/年</strong> 的一般责任险估算更适合软件开发、办公支持等低风险 IT SES 场景。数据中心维护建议先按 <strong>¥10万〜30万/年起</strong> 预留；如果客户明确要求覆盖 GPU、服务器、电源设备等高价值硬件在作业中的损坏，不能只看普通 GL，需要由保险代理店按实际作业内容、客户设备价值、保额、免赔额、是否含下家人员正式报价。
+  </div>
+</section>
+
 <section id="formula" class="card">
   <h2 class="section-title"><span class="num">3</span>正确计算口径：只看项目实际进场人员</h2>
 
@@ -361,6 +438,7 @@
              + 实际进场人数 × 人身意外险
              + 实际进场人数 × 労災特別加入/下家证明成本
              + 车辆保险
+             + 数据中心现场作业/客户硬件损坏相关特约
              + IT E&O / Cyber
 
 单人月成本 = 项目新增成本 ÷ 项目月份 ÷ 实际进场人数</div>
@@ -380,6 +458,12 @@
         <td><span class="green">固定成本，不按人数线性增加</span></td>
         <td>原则上由我司承担，作为对客户的供应商保险证明。</td>
         <td>公司年度保单；可按项目或客户摊销。</td>
+      </tr>
+      <tr>
+        <td><strong>数据中心现场作业/客户硬件损坏</strong></td>
+        <td><span class="amber">不一定按人数，取决于保单条款和作业范围</span></td>
+        <td>原则上由对客户承担供应商责任的一方承担；下家作业也要同步传导。</td>
+        <td>确认受託物、管理財物、作業対象物損壊；高价硬件另行报价。</td>
       </tr>
       <tr>
         <td><strong>5,000万日元人身意外险</strong></td>
@@ -438,6 +522,10 @@
       <div>
         <label for="special">特別加入/人/年（円）</label>
         <input id="special" type="number" value="0" min="0" step="1000" />
+      </div>
+      <div>
+        <label for="hardware">硬件损坏/现场作业特约 年保费（円）</label>
+        <input id="hardware" type="number" value="0" min="0" step="10000" />
       </div>
       <div>
         <label for="cyber">Cyber/E&O 年保费（円）</label>
@@ -541,6 +629,13 @@
         <td>建议摊入项目管理费/保险成本。</td>
       </tr>
       <tr>
+        <td><strong>数据中心维护作业相关保障</strong><br>客户硬件损坏、受託物/管理財物/作業対象物損壊</td>
+        <td>作业会接触客户服务器、GPU、存储、网络设备、PDU/UPS时</td>
+        <td class="cost">GL保守 ¥10万〜30万/年起<br>明确覆盖高价硬件时另行报价</td>
+        <td>公司整体保单/特约</td>
+        <td>建议作为项目特殊风险成本单独列示。</td>
+      </tr>
+      <tr>
         <td><strong>1亿 → 2亿 一般责任险上调</strong></td>
         <td>公司已有 1亿/事故，只是不足客户要求</td>
         <td class="cost">差额约 ¥2万〜8万/年</td>
@@ -606,6 +701,12 @@
         <td>普通 GL 通常不等于 Cyber/E&O；也未必自动覆盖下家行为，需确认 <code>下請負人</code>、<code>業務委託者</code> 的处理。</td>
       </tr>
       <tr>
+        <td><strong>Data Center Maintenance Risk</strong><br>数据中心维护/客户硬件损坏风险</td>
+        <td>請負業者賠償責任保険、企業総合賠償責任保険、和文CGL；特约关键词：受託物損壊、管理財物損壊、作業対象物損壊</td>
+        <td>维护作业中造成客户服务器、GPU、存储、网络设备、电源设备等物理损坏的赔偿责任。</td>
+        <td>普通 GL 未必自动覆盖正在操作、保管、管理中的财物，必须让代理店确认。</td>
+      </tr>
+      <tr>
         <td><strong>Workers’ Compensation</strong><br>员工工伤保险</td>
         <td>労災保険；自由职业者可用「労災保険への特別加入」</td>
         <td>工作中/通勤中的伤病、后遗障害、死亡等。</td>
@@ -656,6 +757,11 @@
       <h3>人身意外险 / 労災上乗せ</h3>
       <p>满足“每名人员 5,000万日元”的要求。可用普通伤害险/团体伤害险，也可通过业务灾害综合保险实现工作中事故的上乗せ补偿。</p>
     </div>
+    <div class="mini-card">
+      <span class="badge red">现场作业</span>
+      <h3>数据中心维护 / 客户硬件损坏</h3>
+      <p>用于确认服务器、GPU、存储、网络设备、电源设备等客户财物在维护作业中的损坏是否被覆盖。关键词包括受託物損壊、管理財物損壊、作業対象物損壊。</p>
+    </div>
   </div>
 </section>
 
@@ -664,7 +770,7 @@
   <p>客户要求每事故 USD 1,000,000。日本保单一般以日元设置限额。考虑汇率波动，建议不要只设 1亿日元，而应至少设置 <strong>2亿日元/事故</strong>。</p>
 
   <div class="callout warn">
-    <strong>注意：</strong>普通 General Liability 主要覆盖第三者人身伤害、财物损坏；并不一定覆盖软件开发错误、系统故障、数据泄露、客户营业损失等 IT 专业风险。
+    <strong>注意：</strong>普通 General Liability 主要覆盖第三者人身伤害、财物损坏；并不一定覆盖软件开发错误、系统故障、数据泄露、客户营业损失等 IT 专业风险。数据中心维护中正在操作、管理、保管的客户服务器/GPU等设备，也可能需要受託物・管理財物・作業対象物損壊等特约确认。
   </div>
 
   <table>
@@ -817,6 +923,7 @@ IT/SES 低风险办公类粗估：工资总额 × 0.25%〜0.3%</div>
 <section id="risk" class="card">
   <h2 class="section-title"><span class="num">7.6</span>关键风险与成本上升点</h2>
   <ol>
+    <li><strong>数据中心维护导致客户硬件损坏：</strong>服务器、GPU、存储、交换机、PDU/UPS 等客户设备可能被视为正在操作或管理中的财物，普通 GL 未必自动覆盖，需确认受託物、管理財物、作業対象物損壊。</li>
     <li><strong>General Liability 与 IT E&O/Cyber 混淆：</strong>如果客户实际要求覆盖软件开发错误、数据泄露、系统故障，一般责任险可能不够，成本会从几万/十几万日元级别跳到百万日元级别。</li>
     <li><strong>USD 保额与 JPY 保额换算：</strong>USD 100万按汇率约 1.5〜1.6亿日元，建议设置 JPY 2亿/事故并确认客户是否接受。</li>
     <li><strong>人身意外险范围不明：</strong>24小时保障、仅工作中、仅通勤/交通事故，成本差距很大。</li>
@@ -837,6 +944,16 @@ IT/SES 低风险办公类粗估：工资总额 × 0.25%〜0.3%</div>
       </tr>
     </thead>
     <tbody>
+      <tr>
+        <td>本项目是否包含数据中心内服务器、GPU、存储、交换机、PDU/UPS 的安装、交换、插拔线、上架下架、电源操作？</td>
+        <td class="cost">可能影响一般责任险报价</td>
+        <td>如果接触高价值硬件，需按现场维护作业而不是软件开发报价。</td>
+      </tr>
+      <tr>
+        <td>客户是否要求覆盖操作不当导致的硬件损坏、误断电导致的服务器损坏、误拔线导致的设备故障？</td>
+        <td class="cost">可能需要追加特约</td>
+        <td>需确认受託物損壊、管理財物損壊、作業対象物損壊、使用不能損害。</td>
+      </tr>
       <tr>
         <td>General Liability 是否只要求对人/对物？<br>是否包含 IT E&O、Professional Liability、Cyber Liability？</td>
         <td class="cost">几万〜十几万 vs 百万级</td>
@@ -887,9 +1004,11 @@ IT/SES 低风险办公类粗估：工资总额 × 0.25%〜0.3%</div>
   <h3>9.1 结论</h3>
   <pre>一般责任险是公司整体保单，不是每个人一份；5000万日元的人身意外险是按“实际进场人员”计算。
 
-客户要求USD100万/事故，按现在汇率约1.6亿日元，为保险起见建议报价JPY 2亿/事故。普通日本国内一般责任险GL/CGL，内部预算大概5万〜12万日元/年；如果需要英文证明、追加被保险人、特殊条款，按10万〜30万日元/年预留。需要保险代理店报价。
+客户要求USD100万/事故，按现在汇率约1.6亿日元，为保险起见建议报价JPY 2亿/事故。普通日本国内一般责任险GL/CGL，软件开发或办公支持口径的内部预算大概5万〜12万日元/年；如果需要英文证明、追加被保险人、特殊条款，按10万〜30万日元/年预留。需要保险代理店报价。
 
-单人项目普通场景：一般责任险GL摊销 + 5000万意外险，大概9,000〜18,000日元/人/月。若人员来自下家，建议要求下家提供同等保险证明；下家已自带保险时，我们只承担公司层面的GL摊销。Cyber/E&O不应默认包含，如果客户要求系统开发错误、数据泄露、系统障害等专业责任险，需要单独报价，可能是100万日元/年以上。</pre>
+但这次如果是数据中心维护，人员可能接触客户服务器、GPU、存储、网络设备、PDU/UPS 等高价值硬件。操作不当、误配线、误拔线、误断电导致硬件损坏时，普通GL未必自动覆盖，需要确认受託物損壊、管理財物損壊、作業対象物損壊、使用不能損害，以及下家人员作业导致事故的处理。数据中心维护场景建议按10万〜30万日元/年起预留，明确覆盖高价硬件时必须另行报价。
+
+单人项目普通场景：一般责任险GL摊销 + 5000万意外险，大概9,000〜18,000日元/人/月。若人员来自下家，建议要求下家提供同等保险证明；下家已自带保险时，我们只承担公司层面的GL摊销。Cyber/E&O不应默认包含，如果客户要求系统开发错误、数据泄露、系统障害、业务中断损失等专业责任险，需要单独报价，可能是100万日元/年以上。</pre>
 
   <h3>9.2 发给客户的确认邮件（日文）</h3>
   <pre>件名：プロジェクト参画時の保険要件に関する確認
@@ -903,17 +1022,17 @@ IT/SES 低风险办公类粗估：工资总额 × 0.25%〜0.3%</div>
 2. USD 1,000,000 per occurrence の要件について、
    日本国内保険の JPY 200,000,000 per occurrence で充足可能でしょうか。
 
-3. 英文付保証明書（Certificate of Insurance）は必要でしょうか。
+4. 英文付保証明書（Certificate of Insurance）は必要でしょうか。
    また、Additional Insured、Waiver of Subrogation 等の記載は必要でしょうか。
 
-4. Personal Accident の JPY 50,000,000 は、24時間補償が必要でしょうか。
+5. Personal Accident の JPY 50,000,000 は、24時間補償が必要でしょうか。
    それとも業務中・通勤中のみの補償でよろしいでしょうか。
 
-5. 保険対象者は本プロジェクトに実際に参画する要員のみでよろしいでしょうか。
+6. 保険対象者は本プロジェクトに実際に参画する要員のみでよろしいでしょうか。
    協力会社要員については、協力会社の同等保険証明で代替可能でしょうか。
 
-6. 本プロジェクトにおいて業務用車両の使用は想定しておりません。
-   Vehicle Liability は該当なしとの理解でよろしいでしょうか。
+7. 本プロジェクトにおいて業務用車両の使用は想定しておりません。
+   Vehicle Liability は該当なしとの理解でよろしいでしょうか.
 
 以上、よろしくお願いいたします。</pre>
 
@@ -925,7 +1044,8 @@ IT/SES 低风险办公类粗估：工资总额 × 0.25%〜0.3%</div>
 下記条件でお見積りをお願いいたします。
 
 【事業内容】
-IT SES、システム開発支援、顧客先常駐業務
+IT SES、データセンター保守・運用支援、顧客先常駐業務
+作業内容には、サーバー、GPU、ストレージ、ネットワーク機器、ラック、ケーブル、PDU、UPS等の顧客所有機器への接触・操作が含まれる可能性があります。
 プロジェクト要員は案件ごとに変動し、協力会社要員を含む場合があります。
 社有車・業務用車両の使用は原則ありません。
 
@@ -934,6 +1054,9 @@ IT SES、システム開発支援、顧客先常駐業務
 ・対人・対物賠償
 ・支払限度額：1事故 JPY 200,000,000 以上
 ・顧客先での業務遂行中の事故を対象に含めたい
+・データセンター内での保守作業、機器交換、配線、電源操作等を含めたい
+・顧客所有のサーバー、GPU、ストレージ、ネットワーク機器、PDU、UPS等の損壊を補償対象に含められるか確認したい
+・受託物損壊、管理財物損壊、作業対象物損壊、使用不能損害の補償可否、支払限度額、免責金額を確認したい
 ・協力会社要員／下請負人の行為に起因する事故の取扱いを確認したい
 ・英文付保証明書の発行可否
 ・Additional Insured 等の記載可否
@@ -949,11 +1072,45 @@ IT SES、システム開発支援、顧客先常駐業務
 ・フリーランス／個人事業主の労災特別加入に関する案内可否
 
 よろしくお願いいたします。</pre>
+
+  <h3>9.4 数据中心维护追加询价模板（日文）</h3>
+  <pre>件名：データセンター保守業務における顧客機器損壊リスクの補償確認
+
+お世話になっております。
+追加で、今回の業務内容に関して下記の補償可否を確認させてください。
+
+今回の業務はシステム開発ではなく、データセンター内での保守・運用支援業務です。
+サーバー、GPU、ストレージ、ネットワーク機器、ラック、ケーブル、PDU、UPS等の顧客所有機器に接触する可能性があります。
+
+作業ミス、誤操作、誤配線、誤抜線、誤った電源遮断等により、
+顧客所有のハードウェアが損壊した場合の賠償責任を補償対象に含めたいです。
+
+以下の補償可否、支払限度額、免責金額、対象外事項をご確認ください。
+
+・受託物損壊
+・管理財物損壊
+・作業対象物損壊
+・顧客所有のサーバー、GPU、ストレージ、ネットワーク機器、PDU、UPS等の損壊
+・誤配線、誤抜線、誤操作、誤った電源遮断に起因する損壊
+・停電、瞬断、電源遮断に起因する機器損壊
+・使用不能損害
+・データ消失、システム停止、業務中断損害の取扱い
+・協力会社要員／下請負人の作業に起因する事故
+・顧客先データセンター内での作業中事故
+
+また、通常の General Liability / CGL で上記が不足する場合、
+追加すべき特約または別途必要となる保険商品をご提案ください。
+
+顧客からは JPY 200,000,000 per occurrence 相当の補償を求められる可能性があります。
+上記各補償について、同じ限度額で設定可能か、またはサブリミットが設定されるかもご確認ください。
+
+よろしくお願いいたします。</pre>
 </section>
 
 <section id="risk" class="card">
   <h2 class="section-title"><span class="num">10</span>风险提示</h2>
   <ol>
+    <li><strong>不要用“软件开发SES”的低风险口径直接套数据中心维护。</strong>只要人员会接触客户服务器、GPU、电源设备，就要确认客户硬件损坏、作业对象物、管理财物、受托物等条款。</li>
     <li><strong>不要说“一般责任险GL 已覆盖系统开发错误”。</strong>普通 CGL/施設賠償主要是对人对物；开发错误、信息泄露、系统停止要看 IT E&O/Cyber。</li>
     <li><strong>不要说“下家的人由下家管，所以我司不用买保险”。</strong>客户合同对象通常是我司，我司层面的供应商保险可能仍然必要。</li>
     <li><strong>不要按公司全体人数报价。</strong>除非客户明确要求全公司覆盖，否则应按实际进场人员测算按人成本。</li>
@@ -969,6 +1126,8 @@ IT SES、システム開発支援、顧客先常駐業務
     <li><strong>三井住友海上「ビジネスプロテクター 保険料例」：</strong>软件业、年销售额1,000万日元、支払限度額1亿日元、保険期間1年、月额2,080〜4,830日元。<br><a href="https://www.ms-ins.com/business/indemnity/biz-protector/example.html">https://www.ms-ins.com/business/indemnity/biz-protector/example.html</a></li>
     <li><strong>东京海上日动「施設賠償責任保険」：</strong>设施管理、业务遂行导致第三者受伤或财物损坏时的赔偿；保费由工作内容、面积/入场者数/売上高、支払限度額等决定。<br><a href="https://www.tokiomarine-nichido.co.jp/hojin/baiseki/shisetsu/">https://www.tokiomarine-nichido.co.jp/hojin/baiseki/shisetsu/</a></li>
     <li><strong>損保ジャパン「企業総合賠償責任保険（和文CGL）」：</strong>国内事业活动相关第三者赔偿风险的综合补偿，核保会确认事业内容、事业所明细、过去事故等。<br><a href="https://www.sompo-japan.co.jp/hinsurance/risk/liability/scorpo/">https://www.sompo-japan.co.jp/hinsurance/risk/liability/scorpo/</a></li>
+    <li><strong>东京海上日动「請負業者賠償責任保険」：</strong>工事・作業等の遂行に起因する対人・対物事故、下請負人の取扱い等を確認する際の参考。<br><a href="https://www.tokiomarine-nichido.co.jp/hojin/baiseki/ukeoi/">https://www.tokiomarine-nichido.co.jp/hojin/baiseki/ukeoi/</a></li>
+    <li><strong>損保ジャパン「事業活動総合保険」：</strong>工事・作業等を含む事業活動リスクの保険料例・補償確認の参考。<br><a href="https://www.sompo-japan.co.jp/hinsurance/master_plus/">https://www.sompo-japan.co.jp/hinsurance/master_plus/</a></li>
     <li><strong>Wise / ExchangeRates USD-JPY 汇率：</strong>2026-06-07 左右 1 USD 约 160.3 JPY；USD 1,000,000 约等于 JPY 1.603亿。<br><a href="https://wise.com/zh-cn/currency-converter/usd-to-jpy-rate/history">https://wise.com/zh-cn/currency-converter/usd-to-jpy-rate/history</a></li>
     <li><strong>厚生労働省「労働保険の適用・徴収」：</strong>劳动保险包含労災保険和雇用保険；雇佣一名劳动者原则上需要加入；保费按賃金総額×保険料率计算。<br><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/hoken/index.html">https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/hoken/index.html</a></li>
     <li><strong>厚生労働省「令和8年度雇用保険料率」：</strong>一般事业的事业主负担为 8.5/1000。<br><a href="https://www.mhlw.go.jp/content/001692566.pdf">https://www.mhlw.go.jp/content/001692566.pdf</a></li>
@@ -1001,10 +1160,11 @@ function calcCost(){
   const gl = num('gl');
   const pa = num('pa');
   const special = num('special');
+  const hardware = num('hardware');
   const cyber = num('cyber');
   const car = num('car');
   const period = months / 12;
-  const companyCost = (gl + cyber + car) * period / share;
+  const companyCost = (gl + hardware + cyber + car) * period / share;
   const peopleCost = persons * (pa + special) * period;
   const total = companyCost + peopleCost;
   const monthly = total / months;
